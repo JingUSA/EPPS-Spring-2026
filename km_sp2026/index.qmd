@@ -1,6 +1,12 @@
 ---
 title: "EPPS 6323 Knowledge Mining"
+format: html
 ---
 
 ## Assignments
+
+- [Assignment 1](assignment1.html)
+
+
+
 

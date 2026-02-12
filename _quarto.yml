@@ -3,29 +3,25 @@ project:
   output-dir: docs
 
 website:
-  title: "Jing Tao - Spring 2026 - Dr. Ho"
   navbar:
     left:
-      - text: Home
+      - text: "Home"
         href: index.qmd
 
       - text: "EPPS 6323 Knowledge Mining"
         menu:
-          - text: Course Home
-            href: km_sp2026/index.qmd
-        
-        
+          - text: "Course Home"
+            href: km_sp2026/index.html
+          - text: "Assignment 1"
+            href: km_sp2026/assignment1.html
+
+ 
+
 
       - text: "EPPS 6354 Information Management"
         menu:
-          - text: Course Home
-            href: im_sp2026/index.qmd
-      
-format:
-  html:
-    theme: cosmo
-    css: styles.css
-    toc: true
-
-
+          - text: "Course Home"
+            href: im_sp2026/index.html
+          - text: "Assignment 1"
+            href: im_sp2026/assignment1.html
 

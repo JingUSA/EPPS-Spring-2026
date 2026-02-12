@@ -1,6 +1,10 @@
 ---
 title: "EPPS 6354 Information Management"
+format: html
 ---
 
 ## Assignments
+
+- [Assignment 1](assignment1.html)
+
 

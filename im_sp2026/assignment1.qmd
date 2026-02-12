@@ -1,5 +1,147 @@
 ---
-title: "IM - Assignment 1"
+title: "EPPS 6354  Assignment 1"
+subtitle: "Questions 1, 2, 6, and 4"
+author: "Jing Tao"
+date: "2026-02-05"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    center: false
+execute:
+  echo: false
+  warning: false
+  message: false
 ---
 
-Put your assignment content here.
+## Q1: 3 applications using database systems for persistent data
+
+## Application 1: Online Banking
+
+**What persistent data is stored**
+- Accounts, balances, transaction records, payees, transfers, statements
+
+**How the database is used**
+- Transactions (ACID) keep transfers consistent (no double charge / missing debit)
+- Indexing supports fast search by date, amount, merchant
+- Audit logs support compliance and dispute resolution
+
+## Application 2: University Systems (Registration / eLearning)
+
+**What persistent data is stored**
+- Students, courses, enrollments, grades, attendance, submissions
+
+**How the database is used**
+- Many-to-many relationship: students ↔ courses (enrollments table)
+- Constraints enforce rules (prerequisites, capacity, deadlines)
+- Queries generate gradebooks, transcripts, and reports
+
+## Application 3: E-commerce (Amazon / Taobao)
+
+**What persistent data is stored**
+- Products, inventory, carts, orders, payments, shipping, reviews
+
+**How the database is used**
+- Tracks order lifecycle + payment/shipping status
+- Updates inventory and fulfillment information
+- Supports search/filtering and user history
+
+## Q2: 3 domain project applications (purpose, functions, interface)
+## Project 1: Criminology Case Linkage System
+
+**Purpose**
+- Help analysts connect related incidents using patterns (modus operandi, location/time)
+
+**Functions**
+- Incident intake form (suspect/vehicle/weapon/location/time)
+- Similarity search + filters (time range, area, category)
+- Export case packet for investigators
+
+**Simple interface**
+- Left: filters  
+- Center: map + timeline  
+- Right: ranked “Similar Cases” list + confidence score
+
+## Project 2: Economics Inflation & Household Stress Dashboard
+
+**Purpose**
+- Track CPI/wages/unemployment and relate them to household hardship indicators
+
+**Functions**
+- Import macro indicators + survey hardship measures
+- Trend charts, regional comparison, automatic short report export
+
+**Simple interface**
+- Top: region + time window
+- Middle: trend charts + heatmap
+- Bottom: “Key takeaways” summary box
+
+## Project 3: Brain Science / Health Cohort Tracker
+
+**Purpose**
+- Manage longitudinal participant data, visits, and outcomes for a research cohort
+
+**Functions**
+- Enrollment + visit scheduling
+- Survey/lab result uploads + validation checks
+- De-identified export for analysis
+
+**Simple interface**
+- Tabs: Participants | Visits | Measures | Export
+- Profile page: visit timeline + latest metrics
+
+## Q6: At least 3 tables for a social network/social media system
+## Table 1: Users
+
+**Users**
+- `user_id` (PK)
+- `username` (unique), `email` (unique)
+- `hashed_password`
+- `created_at`, `status` (active/banned)
+- `bio`, `avatar_url`
+
+## Table 2: Posts and Comments
+
+**Posts**
+- `post_id` (PK)
+- `author_id` (FK → Users.user_id)
+- `content`, `created_at`
+- `community_id` (optional FK)
+
+**Comments**
+- `comment_id` (PK)
+- `post_id` (FK → Posts.post_id)
+- `author_id` (FK → Users.user_id)
+- `parent_comment_id` (nullable)
+- `content`, `created_at`
+
+## Table 3: Votes/Reactions (and optional follows)
+
+**Votes**
+- `vote_id` (PK)
+- `user_id` (FK)
+- `target_type` (post/comment), `target_id`
+- `vote_value` (+1 / -1)
+- `created_at`
+- Unique: (`user_id`, `target_type`, `target_id`)
+
+**Optional: Follows**
+- `follower_id` (FK → Users)
+- `followee_id` (FK → Users)
+- `created_at`
+
+## Q4: Why NoSQL emerged in the 2000s + contrast with traditional databases
+## Why NoSQL emerged in the 2000s
+
+**Why it emerged**
+- Web-scale systems needed massive throughput and horizontal scaling (scale-out)
+- Data became more flexible / semi-structured (JSON-like), schema changes were frequent
+- Global users required distributed storage and low-latency access
+
+## NoSQL vs Traditional Databases (brief contrast)
+
+- **Schema**: flexible (NoSQL) vs fixed tables & constraints (RDBMS)
+- **Scaling**: easier horizontal scaling vs often scale-up first
+- **Consistency**: often eventual consistency vs strong ACID by default
+- **Query model**: document/key-value/column/graph vs SQL + joins
+- **Best for**: feeds/logs/content at scale vs strong integrity apps (banking/ERP)
