@@ -1,0 +1,127 @@
+---
+title: "EPPS 6354 Assignment 2"
+author: Jing Tao
+date: 02/12/2026
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    center: false
+    fontsize: 24px
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+
+## Q1. relation schema vs relation vs instance
+
+**Relation schema (schema)**\
+The definition/blueprint of a table: its name, attributes (columns),
+data types/domains, and constraints (e.g., primary key, foreign key).
+
+Example: student(SID, name, dept_name, tot_cred) with SID as the primary
+key.
+
+**Relation (relation/table definition under a schema)**\
+The table itself as a concept: the set of tuples (rows) that must follow
+the schema’s structure and constraints.
+
+Example: the Student relation that contains all student records and
+always has the four columns defined above.
+
+**Instance (relation instance / snapshot)**\
+The actual data currently stored in that relation at a specific time (a
+snapshot of rows).
+
+Example (today’s Student instance): (1001, "Alice", "Poli Sci", 30)
+(1002, "Bob", "Cybersecurity", 18)
+
+**Schema = design, Relation = the table concept, Instance = current
+contents.**
+
+------------------------------------------------------------------------
+
+## Q2. Bank database (entities & relationships)
+
+Given relations: - `branch(branch_name, branch_city, assets)` -
+`customer(ID, customer_name, customer_street, customer_city)` -
+`loan(loan_number, branch_name, amount)` - `borrower(ID, loan_number)` -
+`account(account_number, branch_name, balance)` -
+`depositor(ID, account_number)`
+
+------------------------------------------------------------------------
+
+## Q2. Schema diagram
+
+```{mermaid}
+erDiagram
+  BRANCH ||--o{ LOAN : has
+  BRANCH ||--o{ ACCOUNT : has
+  CUSTOMER ||--o{ BORROWER : borrows
+  LOAN ||--o{ BORROWER : is_borrowed_by
+  CUSTOMER ||--o{ DEPOSITOR : deposits
+  ACCOUNT ||--o{ DEPOSITOR : is_owned_by
+
+  BRANCH {
+    string branch_name PK
+    string branch_city
+    numeric assets
+  }
+
+  CUSTOMER {
+    int ID PK
+    string customer_name
+    string customer_street
+    string customer_city
+  }
+
+  LOAN {
+    string loan_number PK
+    string branch_name FK
+    numeric amount
+  }
+
+  ACCOUNT {
+    string account_number PK
+    string branch_name FK
+    numeric balance
+  }
+
+  BORROWER {
+    int ID FK
+    string loan_number FK
+  }
+
+  DEPOSITOR {
+    int ID FK
+    string account_number FK
+  }
+```
+
+## Q3. Primary keys and foreign keys
+
+### (i) Appropriate primary keys (PK)
+
+- **branch**: `branch_name` (PK)  
+- **customer**: `ID` (PK)  
+- **loan**: `loan_number` (PK)  
+- **account**: `account_number` (PK)  
+- **borrower**: (`ID`, `loan_number`) (composite PK)  
+- **depositor**: (`ID`, `account_number`) (composite PK)
+
+### (ii) Appropriate foreign keys (FK)
+
+- `loan.branch_name` → `branch.branch_name`
+- `account.branch_name` → `branch.branch_name`
+- `borrower.ID` → `customer.ID`
+- `borrower.loan_number` → `loan.loan_number`
+- `depositor.ID` → `customer.ID`
+- `depositor.account_number` → `account.account_number`
+
+## Q4. Two ways AI/LLMs help manage or query a database (3–5 sentences)
+
+1) **Natural-language to SQL**: An LLM can translate a user’s question (in plain English) into a correct SQL query and explain what the query does. This saves time on SQL syntax and reduces errors such as incorrect joins or missing filters, improving efficiency and accuracy compared with writing queries manually.
+
+2) **Performance + data-quality assistance**: AI can recommend indexes and query rewrites when a query is slow, and it can flag data-quality issues (missing keys, inconsistent formats, unusual values) during cleaning or ETL. These suggestions reduce debugging time and improve reliability compared with traditional manual trial-and-error checks.
