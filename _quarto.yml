@@ -19,9 +19,6 @@ website:
 
 
 
- 
-
-
       - text: "EPPS 6354 Information Management"
         menu:
           - text: "Course Home"
@@ -30,4 +27,6 @@ website:
             href: im_sp2026/assignment1.html
           - text: "Assignment 2"
             href: im_sp2026/assignment2.html
+          - text: "Assignment 3"
+            href: im_sp2026/assignment3.html
 

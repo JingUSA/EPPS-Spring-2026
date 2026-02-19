@@ -1,0 +1,142 @@
+---
+title: "Assignment 3"
+author: "Jing Tao"
+date: "2026-02-19"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## 1. Online SQL Interpreter
+
+Online SQL interpreter link:\
+https://www.db-book.com/university-lab-dir/sqljs.html
+
+## 2. Write SQL codes to get a list of
+
+### 2(i) Student IDs (hint: from the `takes` relation)
+
+``` sql
+SELECT DISTINCT ID
+FROM takes
+ORDER BY ID;
+```
+
+![](images/q2i_student_ids.png){width="650px" fig-align="center"}
+
+### 2(ii) Instructors
+
+``` sql
+SELECT ID, name
+FROM instructor
+ORDER BY name;
+```
+
+![](images/q2ii_instructors.png){width="650px" fig-align="center"}
+
+### 2(iii) Departments
+
+``` sql
+SELECT dept_name 
+FROM department 
+ORDER BY dept_name;
+```
+
+![](images/q2iii_departments.png){width="650px" fig-align="center"}
+
+## 3. Write in SQL codes to do following queries
+
+### 3(i) Find the ID and name of each student who has taken at least one Comp. Sci. course (no duplicates)
+
+``` sql
+SELECT DISTINCT s.ID, s.name 
+FROM student s JOIN takes t ON s.ID = t.ID 
+JOIN course c ON t.course_id = c.course_id 
+WHERE c.dept_name = 'Comp. Sci.' 
+ORDER BY s.ID;
+```
+
+![](images/q3i_cs_students.png){width="650px" fig-align="center"}
+
+### 3(ii) Add grades to the list
+
+``` sql
+SELECT DISTINCT s.ID, s.name, t.grade 
+FROM student s 
+JOIN takes t ON s.ID = t.ID 
+JOIN course c ON t.course_id = c.course_id 
+WHERE c.dept_name = 'Comp. Sci.' 
+ORDER BY s.ID, t.grade;
+```
+
+![](images/q3ii_cs_students_grades.png){width="650px" fig-align="center"}
+
+### 3(iii) Find the ID and name of each student who has not taken any course offered before 2017
+
+``` sql
+SELECT s.ID, s.name 
+FROM student s 
+WHERE NOT EXISTS ( SELECT 1 FROM takes t 
+WHERE t.ID = s.ID AND t.year \< 2017 ) 
+ORDER BY s.ID;
+```
+
+![](images/q3iii_not_before_2017.png){width="650px" fig-align="center"}
+
+### 3(iv) For each department, find the maximum salary of instructors in that department
+
+``` sql
+SELECT dept_name, MAX(salary) AS max_salary
+FROM instructor
+GROUP BY dept_name
+ORDER BY dept_name;
+```
+
+![](images/q3iv_max_salary_dept.png){width="650px" fig-align="center"}
+
+### 3(v) Find the lowest, across all departments, of the per-department maximum salary
+
+``` sql
+SELECT MIN(max_salary) AS lowest_of_department_max
+FROM (
+  SELECT dept_name, MAX(salary) AS max_salary
+  FROM instructor
+  GROUP BY dept_name
+);
+```
+
+![](images/q3v_lowest_salary_dept.png){width="650px" fig-align="center"}
+
+### 3(vi) Add names to the list (department(s) whose maximum salary is the lowest)
+
+``` sql
+SELECT dept_name, MAX(salary) AS max_salary
+FROM instructor
+GROUP BY dept_name
+HAVING MAX(salary) = (
+  SELECT MIN(max_salary)
+  FROM (
+    SELECT dept_name, MAX(salary) AS max_salary
+    FROM instructor
+    GROUP BY dept_name
+  )
+)
+ORDER BY dept_name;
+```
+
+![](images/q3vi_lmaximum_lowest_dept.png){width="650px" fig-align="center"}
+
+### 4. Find instructor (with name and ID) who has never given an A grade in any course he or she has taught
+
+``` sql
+SELECT i.ID, i.name 
+FROM instructor i WHERE NOT EXISTS ( SELECT 1 FROM teaches te JOIN takes ta ON te.course_id = ta.course_id AND te.sec_id = ta.sec_id AND te.semester = ta.semester AND te.year = ta.year WHERE te.ID = i.ID AND ta.grade = 'A' ) ORDER BY i.ID;
+```
+
+![](images/q4_never_given_A.png){width="650px" fig-align="center"}
