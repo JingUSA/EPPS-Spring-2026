@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Jing Tao">
 
-<title>Spring 2026 Course Portfolio</title>
+<title>Assignment 5</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +21,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-79108a0fc1995748cbd19a5b0e3e3e7c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-79108a0fc1995748cbd19a5b0e3e3e7c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -83,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -92,23 +127,23 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-epps-6323-knowledge-mining">    
         <li>
-    <a class="dropdown-item" href="./km_sp2026/index.html">
+    <a class="dropdown-item" href="../km_sp2026/index.html">
  <span class="dropdown-text">Course Home</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./km_sp2026/assignment1.html">
+    <a class="dropdown-item" href="../km_sp2026/assignment1.html">
  <span class="dropdown-text">Assignment 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./km_sp2026/assignment2.html">
+    <a class="dropdown-item" href="../km_sp2026/assignment2.html">
  <span class="dropdown-text">Assignment 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./km_sp2026/assignment3.html">
+    <a class="dropdown-item" href="../km_sp2026/assignment3.html">
  <span class="dropdown-text">Assignment 3</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./km_sp2026/assignment4.html">
+    <a class="dropdown-item" href="../km_sp2026/assignment4.html">
  <span class="dropdown-text">Assignment 4</span></a>
   </li>  
     </ul>
@@ -119,27 +154,27 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-epps-6354-information-management">    
         <li>
-    <a class="dropdown-item" href="./im_sp2026/index.html">
+    <a class="dropdown-item" href="../im_sp2026/index.html">
  <span class="dropdown-text">Course Home</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./im_sp2026/assignment1.html">
+    <a class="dropdown-item" href="../im_sp2026/assignment1.html">
  <span class="dropdown-text">Assignment 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./im_sp2026/assignment2.html">
+    <a class="dropdown-item" href="../im_sp2026/assignment2.html">
  <span class="dropdown-text">Assignment 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./im_sp2026/assignment3.">
+    <a class="dropdown-item" href="../im_sp2026/assignment3.">
  <span class="dropdown-text">Assignment 3</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./im_sp2026/assignment4.html">
+    <a class="dropdown-item" href="../im_sp2026/assignment4.html">
  <span class="dropdown-text">Assignment 4</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./im_sp2026/assignment5.html">
+    <a class="dropdown-item" href="../im_sp2026/assignment5.html">
  <span class="dropdown-text">Assignment 5</span></a>
   </li>  
     </ul>
@@ -161,13 +196,19 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Spring 2026 Course Portfolio</h1>
+<h1 class="title">Assignment 5</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jing Tao </p>
+          </div>
+  </div>
     
   
     
@@ -178,15 +219,93 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Welcome! This site hosts Jing Tao’s course assignments for Spring 2026.</p>
-<section id="courses" class="level2">
-<h2 class="anchored" data-anchor-id="courses">Courses</h2>
+<section id="construct-an-e-r-diagram-for-a-hospital" class="level2">
+<h2 class="anchored" data-anchor-id="construct-an-e-r-diagram-for-a-hospital">2. Construct an E-R diagram for a hospital</h2>
+<p>To construct an E-R diagram for a hospital, I would include three main entity sets: <strong>Patient</strong>, <strong>Doctor</strong>, and <strong>TestExam</strong>.</p>
+<section id="entity-sets" class="level3">
+<h3 class="anchored" data-anchor-id="entity-sets">Entity sets</h3>
+<p><strong>Patient</strong> - <code>patient_id</code> (primary key) - <code>patient_name</code> - <code>date_of_birth</code> - <code>gender</code> - <code>address</code> - <code>phone</code></p>
+<p><strong>Doctor</strong> - <code>doctor_id</code> (primary key) - <code>doctor_name</code> - <code>specialty</code> - <code>phone</code></p>
+<p><strong>TestExam</strong> - <code>log_id</code> (primary key) - <code>test_type</code> - <code>exam_date</code> - <code>result</code> - <code>notes</code></p>
+</section>
+<section id="relationships" class="level3">
+<h3 class="anchored" data-anchor-id="relationships">Relationships</h3>
 <ul>
-<li><p><strong>EPPS 6323 Knowledge Mining (Spring 2026)</strong></p></li>
-<li><p><strong>EPPS 6354 Information Management (Spring 2026)</strong></p></li>
+<li>A <strong>Patient</strong> can have many <strong>TestExam</strong> records.</li>
+<li>Each <strong>TestExam</strong> record belongs to one <strong>Patient</strong>.</li>
+<li>A <strong>Doctor</strong> can conduct many <strong>TestExam</strong> records.</li>
+<li>Each <strong>TestExam</strong> record is conducted or supervised by one <strong>Doctor</strong>.</li>
 </ul>
+<p>In this design, <strong>TestExam</strong> serves as the log of various tests and examinations conducted for each patient. It records the type of test or examination, the date, the result, and notes, while also linking the record to both the patient and the doctor.</p>
+<p>This structure allows the hospital to maintain a complete history of tests and examinations for each patient.</p>
+</section>
+<section id="diagram" class="level3">
+<h3 class="anchored" data-anchor-id="diagram">Diagram</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/2p.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="why-do-we-have-weak-entity-sets" class="level2">
+<h2 class="anchored" data-anchor-id="why-do-we-have-weak-entity-sets">3. Why do we have weak entity sets?</h2>
+<p>Although any weak entity set can be converted into a strong entity set by adding appropriate attributes, weak entity sets are still useful because they represent the real-world meaning of the data more clearly.</p>
+<p>A weak entity set is used when an entity does not have an independent key of its own and depends on another entity for identification. Modeling such an entity as weak makes this dependency explicit in the schema.</p>
+<p>Weak entity sets are important for several reasons:</p>
+<ol type="1">
+<li><p><strong>They capture existence dependency.</strong><br>
+A weak entity cannot exist without its related strong entity.</p></li>
+<li><p><strong>They reflect natural identification.</strong><br>
+In many situations, an object is identified only in the context of another object. For example, an apartment unit may be identified within a building, or a dependent may be identified within an employee’s family.</p></li>
+<li><p><strong>They improve conceptual clarity.</strong><br>
+Even though we could artificially add a new key and make the entity strong, doing so may hide the meaningful relationship between the entities.</p></li>
+</ol>
+<p>Therefore, we have weak entity sets not because it is impossible to create strong entity sets, but because weak entity sets provide a more accurate and meaningful model of the enterprise.</p>
+<section id="ai" class="level4">
+<h4 class="anchored" data-anchor-id="ai">4(a)(i)</h4>
+<p>Find ID and name of each employee who lives in the same city as the location of the company for which the employee works.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span> e.<span class="kw">ID</span>, e.person_name</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span> employee <span class="kw">as</span> e, works <span class="kw">as</span> w, company <span class="kw">as</span> c</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">where</span> e.<span class="kw">ID</span> <span class="op">=</span> w.<span class="kw">ID</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">and</span> w.company_name <span class="op">=</span> c.company_name</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">and</span> e.city <span class="op">=</span> c.city;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="aii" class="level4">
+<h4 class="anchored" data-anchor-id="aii">4(a)(ii)</h4>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span> e.<span class="kw">ID</span>, e.person_name</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span> employee <span class="kw">as</span> e, employee <span class="kw">as</span> mgr, manages <span class="kw">as</span> m</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">where</span> e.<span class="kw">ID</span> <span class="op">=</span> m.<span class="kw">ID</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">and</span> m.manager_id <span class="op">=</span> mgr.<span class="kw">ID</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">and</span> e.city <span class="op">=</span> mgr.city</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">and</span> e.street <span class="op">=</span> mgr.street;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="aiii" class="level3">
+<h3 class="anchored" data-anchor-id="aiii">4(a)(iii)</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span> e.<span class="kw">ID</span>, e.person_name</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span> employee <span class="kw">as</span> e, works <span class="kw">as</span> w</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">where</span> e.<span class="kw">ID</span> <span class="op">=</span> w.<span class="kw">ID</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">and</span> w.salary <span class="op">&gt;</span> (</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">select</span> <span class="fu">avg</span>(w2.salary)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">from</span> works <span class="kw">as</span> w2</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">where</span> w2.company_name <span class="op">=</span> w.company_name</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  );</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="b" class="level3">
+<h3 class="anchored" data-anchor-id="b">4(b)</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/4b.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
+</figure>
+</div>
+</section>
+<section id="what-is-wrong-with-this-query" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-wrong-with-this-query">What is wrong with this query?</h3>
+<p>The query is problematic because it uses natural join. A natural join matches all attributes with the same name in both relations. In this schema, both instructor and course contain the attribute dept_name. Therefore, the final natural join course imposes an unintended condition on dept_name in addition to the intended join on course_id.</p>
+<p>As a result, the query may incorrectly exclude valid tuples whenever an instructor teaches a course that is not in the same department as the instructor. Therefore, although the query runs and produces output, its logic is still incorrect.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
