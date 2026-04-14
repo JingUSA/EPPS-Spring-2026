@@ -1,0 +1,263 @@
+---
+title: "Assignment 4"
+format: html
+editor: visual
+---
+
+# Assignment 4
+
+# Text Analytics using quanteda
+
+## 1. Read tutorial of quanteda
+
+The `quanteda` package is an R package for text analysis. Its basic workflow is:
+
+-   corpus
+-   tokens
+-   document-feature matrix (dfm)
+-   text statistics and models
+
+It can be used for tokenization, word frequencies, document similarity, and text scaling methods such as Wordfish.
+
+## Setup
+
+```{r}
+library(quanteda)
+library(quanteda.textplots)
+library(quanteda.textmodels)
+library(quanteda.textstats)
+library(readtext)
+library(ggplot2)
+library(dplyr)
+library(stringr)
+library(purrr)
+library(pdftools)
+library(tidyr)
+```
+
+2.  Use sample programs from Teams to analyze 2a. US presidential inaugural speeches Load and preprocess the corpus
+
+```{r}
+data_corpus_inaugural
+corp_inaug <- data_corpus_inaugural
+
+toks_inaug <- tokens(
+  corp_inaug,
+  remove_punct = TRUE,
+  remove_symbols = TRUE,
+  remove_numbers = TRUE
+) |>
+  tokens_tolower() |>
+  tokens_remove(stopwords("en"))
+
+dfm_inaug <- dfm(toks_inaug)
+dfm_inaug <- dfm_trim(dfm_inaug, min_termfreq = 10)
+```
+
+Most frequent words
+
+```{r}
+top_inaug <- textstat_frequency(dfm_inaug, n = 20)
+top_inaug
+```
+
+```{r}
+ggplot(top_inaug, aes(x = reorder(feature, frequency), y = frequency)) +
+  geom_col() +
+  coord_flip() +
+  theme_minimal() +
+  labs(
+    title = "Top 20 words in inaugural speeches",
+    x = "Feature",
+    y = "Frequency"
+  )
+```
+
+Similarities across speeches
+
+```{r}
+inaug_tfidf <- dfm_tfidf(dfm_inaug)
+sim_inaug <- textstat_simil(inaug_tfidf, margin = "documents", method = "cosine")
+as.matrix(sim_inaug)[1:10, 1:10]
+```
+
+Key terms over time
+
+```{r}
+docvars(corp_inaug, "year") <- as.integer(str_extract(docnames(corp_inaug), "^[0-9]{4}"))
+
+dfm_inaug_terms <- dfm_select(
+  dfm(tokens(corp_inaug, remove_punct = TRUE, remove_numbers = TRUE) |> tokens_tolower()),
+  pattern = c("freedom", "government", "america", "people", "union", "war", "peace")
+)
+
+inaug_counts <- convert(dfm_inaug_terms, to = "data.frame")
+inaug_counts$document <- rownames(inaug_counts)
+inaug_counts$year <- docvars(corp_inaug, "year")
+
+inaug_long <- pivot_longer(
+  inaug_counts,
+  cols = c("freedom", "government", "america", "people", "union", "war", "peace"),
+  names_to = "term",
+  values_to = "count"
+)
+
+ggplot(inaug_long, aes(x = year, y = count, color = term)) +
+  geom_line() +
+  geom_point() +
+  theme_minimal() +
+  labs(
+    title = "Selected terms in inaugural speeches over time",
+    x = "Year",
+    y = "Count"
+  )
+```
+
+Interpretation
+
+The inaugural speeches show clear similarities because many presidents repeatedly emphasize themes such as freedom, people, government, union, and America. At the same time, there are also important differences across time and among presidents. Speeches from wartime or crisis periods tend to place more emphasis on conflict, peace, or security, while speeches in other periods may focus more on democracy, unity, or government reform.
+
+2b. US Department of Defense reports Unzip and read the PDF files
+
+```{r}
+dir.create("data", showWarnings = FALSE)
+
+if (file.exists("USDOD.zip")) {
+  unzip("USDOD.zip", exdir = "data")
+}
+
+pdf_files <- list.files("data", pattern = "\\.pdf$|\\.PDF$", full.names = TRUE, recursive = TRUE)
+pdf_files <- pdf_files[!grepl("__MACOSX|\\._", pdf_files)]
+
+length(pdf_files)
+pdf_files
+```
+
+Import the reports as text
+
+```{r}
+dod_texts <- readtext(pdf_files)
+dod_texts$year <- str_extract(basename(dod_texts$doc_id), "(19|20)\\d{2}")
+dod_texts$year <- as.integer(dod_texts$year)
+head(dod_texts)
+```
+
+Build corpus and dfm
+
+```{r}
+corp_dod <- corpus(dod_texts, text_field = "text")
+
+toks_dod <- tokens(
+  corp_dod,
+  remove_punct = TRUE,
+  remove_symbols = TRUE,
+  remove_numbers = TRUE,
+  remove_url = TRUE
+) |>
+  tokens_tolower() |>
+  tokens_remove(stopwords("en"))
+
+dfm_dod <- dfm(toks_dod)
+dfm_dod <- dfm_trim(dfm_dod, min_termfreq = 20)
+```
+
+Top words in DOD reports Top words in DOD reports
+
+```{r}
+top_dod <- textstat_frequency(dfm_dod, n = 30)
+top_dod
+```
+
+```{r}
+ggplot(top_dod, aes(x = reorder(feature, frequency), y = frequency)) +
+  geom_col() +
+  coord_flip() +
+  theme_minimal() +
+  labs(
+    title = "Top 30 words in DOD reports",
+    x = "Feature",
+    y = "Frequency"
+  )
+```
+
+Key terms over time
+
+```{r}
+dod_terms <- c("china", "taiwan", "missile", "navy", "cyber", "space", "deterrence", "nuclear")
+
+dfm_dod_terms <- dfm_select(
+  dfm(tokens(corp_dod, remove_punct = TRUE, remove_numbers = TRUE) |> tokens_tolower()),
+  pattern = dod_terms
+)
+
+dod_counts <- convert(dfm_dod_terms, to = "data.frame")
+dod_counts$document <- rownames(dod_counts)
+dod_counts$year <- dod_texts$year
+
+dod_long <- pivot_longer(
+  dod_counts,
+  cols = all_of(dod_terms),
+  names_to = "term",
+  values_to = "count"
+)
+
+ggplot(dod_long, aes(x = year, y = count, color = term)) +
+  geom_line() +
+  geom_point() +
+  theme_minimal() +
+  labs(
+    title = "Selected terms in DOD reports over time",
+    x = "Year",
+    y = "Count"
+  )
+```
+
+Interpretation
+
+The DOD reports share several common themes, especially China, Taiwan, missiles, naval power, cyber issues, deterrence, and nuclear strategy. Over time, some terms appear more frequently than others, suggesting changes in strategic attention and military priorities.
+
+3.  What is Wordfish?
+
+Wordfish is an unsupervised text scaling model. It estimates document positions on an underlying latent dimension using word frequencies. In this assignment, that latent dimension can be interpreted as differences in strategic framing or emphasis across DOD reports.
+
+Run Wordfish on DOD reports
+
+```{r}
+dfm_dod_wf <- dfm_trim(dfm_dod, min_termfreq = 30, max_docfreq = 0.9, docfreq_type = "prop")
+wf_dod <- textmodel_wordfish(dfm_dod_wf)
+
+wf_results <- data.frame(
+  doc_id = docnames(dfm_dod_wf),
+  theta = wf_dod$theta
+)
+
+wf_results$year <- dod_texts$year[match(wf_results$doc_id, dod_texts$doc_id)]
+wf_results <- wf_results |> arrange(year)
+
+wf_results
+ggplot(wf_results, aes(x = year, y = theta)) +
+  geom_line() +
+  geom_point() +
+  theme_minimal() +
+  labs(
+    title = "Wordfish positions of DOD reports",
+    x = "Year",
+    y = "Theta"
+  )
+```
+
+4.  How to compare positions
+
+There are at least two ways to compare document positions.
+
+First, we can use the Wordfish theta estimates. Documents with similar theta values are closer in language and framing, while documents with very different theta values are farther apart.
+
+Second, we can compare documents using cosine similarity based on tf-idf weighted word frequencies.
+
+```{r}
+dod_tfidf <- dfm_tfidf(dfm_dod)
+sim_dod <- textstat_simil(dod_tfidf, margin = "documents", method = "cosine")
+as.matrix(sim_dod)
+```
+
+Overall, Wordfish provides a scaling-based comparison of positions, while cosine similarity provides a direct measure of how similar the documents are in their vocabulary usage.
