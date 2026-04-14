@@ -4,8 +4,6 @@ format: html
 editor: visual
 ---
 
-# Assignment 4
-
 # Text Analytics using quanteda
 
 ## 1. Read tutorial of quanteda
