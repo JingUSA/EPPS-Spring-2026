@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jing Tao">
+
+<title>Assignment 6</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-79108a0fc1995748cbd19a5b0e3e3e7c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-epps-6323-knowledge-mining" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">EPPS 6323 Knowledge Mining</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-epps-6323-knowledge-mining">    
+        <li>
+    <a class="dropdown-item" href="../km_sp2026/index.html">
+ <span class="dropdown-text">Course Home</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../km_sp2026/assignment1.html">
+ <span class="dropdown-text">Assignment 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../km_sp2026/assignment2.html">
+ <span class="dropdown-text">Assignment 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../km_sp2026/assignment3.html">
+ <span class="dropdown-text">Assignment 3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../km_sp2026/assignment4.html">
+ <span class="dropdown-text">Assignment 4</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-epps-6354-information-management" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">EPPS 6354 Information Management</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-epps-6354-information-management">    
+        <li>
+    <a class="dropdown-item" href="../im_sp2026/index.html">
+ <span class="dropdown-text">Course Home</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../im_sp2026/assignment1.html">
+ <span class="dropdown-text">Assignment 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../im_sp2026/assignment2.html">
+ <span class="dropdown-text">Assignment 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../im_sp2026/assignment3.html">
+ <span class="dropdown-text">Assignment 3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../im_sp2026/assignment4.html">
+ <span class="dropdown-text">Assignment 4</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../im_sp2026/assignment5.html">
+ <span class="dropdown-text">Assignment 5</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../im_sp2026/assignment6.html">
+ <span class="dropdown-text">Assignment 6</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Assignment 6</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jing Tao </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<hr>
+<section id="question-1-websites-using-json-and-xml-data-representations" class="level1">
+<h1>Question 1: Websites Using JSON and XML Data Representations</h1>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This section identifies and analyzes real-world websites that expose data in <strong>JSON</strong> and <strong>XML</strong> formats, examining their structure, composition, and the technologies used to build their underlying web databases.</p>
+<hr>
+</section>
+<section id="part-a-website-using-json-open-library-api" class="level2">
+<h2 class="anchored" data-anchor-id="part-a-website-using-json-open-library-api">Part (a): Website Using JSON — Open Library API</h2>
+<section id="source" class="level3">
+<h3 class="anchored" data-anchor-id="source">1. Source</h3>
+<ul>
+<li><strong>Website:</strong> <a href="https://openlibrary.org/">Open Library</a></li>
+<li><strong>API Endpoint Used:</strong> <code>https://openlibrary.org/search.json?q=political+science&amp;limit=3</code></li>
+<li><strong>Description:</strong> Open Library is an open, editable library catalog maintained by the Internet Archive. Its REST API returns bibliographic records in JSON format.</li>
+</ul>
+</section>
+<section id="fetch-parse-the-json-data" class="level3">
+<h3 class="anchored" data-anchor-id="fetch-parse-the-json-data">2. Fetch &amp; Parse the JSON Data</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>url_json <span class="ot">&lt;-</span> <span class="st">"https://openlibrary.org/search.json?q=political+science&amp;limit=3"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>response_json <span class="ot">&lt;-</span> <span class="fu">GET</span>(url_json)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>json_data     <span class="ot">&lt;-</span> <span class="fu">content</span>(response_json, <span class="at">as =</span> <span class="st">"text"</span>, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>parsed_json   <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(json_data, <span class="at">flatten =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Top-level keys</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Top-level keys in the JSON response:</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Top-level keys in the JSON response:</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">names</span>(parsed_json))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "numFound"          "start"             "numFoundExact"    
+[4] "num_found"         "documentation_url" "q"                
+[7] "offset"            "docs"             </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show key metadata fields from the first 3 results</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>docs <span class="ot">&lt;-</span> parsed_json<span class="sc">$</span>docs</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>display_cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"title"</span>, <span class="st">"author_name"</span>, <span class="st">"first_publish_year"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"publisher"</span>, <span class="st">"language"</span>, <span class="st">"subject"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>display_cols <span class="ot">&lt;-</span> <span class="fu">intersect</span>(display_cols, <span class="fu">names</span>(docs))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>docs[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, display_cols] <span class="sc">|&gt;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>(<span class="at">caption =</span> <span class="st">"Sample Records from Open Library JSON Response"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>, <span class="st">"condensed"</span>),</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small" data-quarto-postprocess="true">
+<caption>Sample Records from Open Library JSON Response</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">title</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">author_name</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">first_publish_year</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">language</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Power and Choice</td>
+<td style="text-align: left;">W. Phillips Shively, W. Philips Shively , W. Phillips Shively</td>
+<td style="text-align: right;">1987</td>
+<td style="text-align: left;">eng</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Πολιτικά (Politiká)</td>
+<td style="text-align: left;">Aristotle</td>
+<td style="text-align: right;">1492</td>
+<td style="text-align: left;">spa, fre, lat, eng, ger, gre, grc, und</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Principles of Political Economy</td>
+<td style="text-align: left;">John Stuart Mill</td>
+<td style="text-align: right;">1848</td>
+<td style="text-align: left;">eng, ger, fre</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</section>
+<section id="json-structure-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="json-structure-analysis">3. JSON Structure Analysis</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Format</strong></td>
+<td>JSON (JavaScript Object Notation)</td>
+</tr>
+<tr class="even">
+<td><strong>Top-level object</strong></td>
+<td><code>{ "numFound": int, "start": int, "docs": [ {...}, ... ] }</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Primary container</strong></td>
+<td><code>docs</code> — an array of book-record objects</td>
+</tr>
+<tr class="even">
+<td><strong>Key fields per record</strong></td>
+<td><code>title</code>, <code>author_name[]</code>, <code>first_publish_year</code>, <code>publisher[]</code>, <code>language[]</code>, <code>subject[]</code>, <code>key</code> (unique ID)</td>
+</tr>
+<tr class="odd">
+<td><strong>Nesting</strong></td>
+<td>Shallow (1–2 levels); arrays used for multi-valued fields</td>
+</tr>
+<tr class="even">
+<td><strong>Data types</strong></td>
+<td>Strings, integers, arrays of strings</td>
+</tr>
+<tr class="odd">
+<td><strong>Identifier</strong></td>
+<td><code>/works/OL...W</code> path-style unique key</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Structural characteristics:</strong> - Uses a <strong>flat envelope pattern</strong>: metadata wrapper (<code>numFound</code>, <code>start</code>) + a <code>docs</code> array - Multi-valued attributes (authors, publishers) are represented as <strong>JSON arrays</strong>, avoiding nested objects - The response is <strong>self-describing</strong> — field names travel with the data - No schema enforcement at the wire level (duck-typed)</p>
+</section>
+<section id="technologies-methods" class="level3">
+<h3 class="anchored" data-anchor-id="technologies-methods">4. Technologies &amp; Methods</h3>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-bordered caption-top table-sm small" data-quarto-postprocess="true">
+<caption>Technologies Powering Open Library's JSON API</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Layer</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Technology</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Data Format</td>
+<td style="text-align: left;">JSON (RFC 8259)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">API Style</td>
+<td style="text-align: left;">REST (REpresentational State Transfer)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Backend Language</td>
+<td style="text-align: left;">Python (web.py / Flask heritage)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Database</td>
+<td style="text-align: left;">PostgreSQL + Solr (full-text search index)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hosting</td>
+<td style="text-align: left;">Internet Archive infrastructure</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Protocol</td>
+<td style="text-align: left;">HTTPS / HTTP 1.1</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p><strong>Key points:</strong> - <strong>REST API</strong> maps HTTP verbs to resources; <code>GET /search.json</code> returns search results - <strong>Solr</strong> acts as the search/query layer, serializing results as JSON - <strong>PostgreSQL</strong> stores canonical catalog records; Solr indexes are rebuilt from it - <strong><code>jsonlite</code></strong> in R de-serializes the JSON into an R data frame in one call</p>
+<hr>
+</section>
+</section>
+<section id="part-b-website-using-xml-pubmed-e-utilities-api-ncbi" class="level2">
+<h2 class="anchored" data-anchor-id="part-b-website-using-xml-pubmed-e-utilities-api-ncbi">Part (b): Website Using XML — PubMed E-utilities API (NCBI)</h2>
+<section id="source-1" class="level3">
+<h3 class="anchored" data-anchor-id="source-1">1. Source</h3>
+<ul>
+<li><strong>Website:</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/">PubMed / NCBI</a></li>
+<li><strong>API Endpoint Used:</strong> <code>https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&amp;term=political+science&amp;retmax=5&amp;usehistory=n</code></li>
+<li><strong>Description:</strong> PubMed is the U.S. National Library of Medicine’s biomedical literature database. Its <strong>E-utilities</strong> REST API returns well-formed, namespace-free XML and is freely accessible without authentication — making it an ideal, stable example of XML data exchange on the web.</li>
+</ul>
+</section>
+<section id="fetch-parse-the-xml-data" class="level3">
+<h3 class="anchored" data-anchor-id="fetch-parse-the-xml-data">2. Fetch &amp; Parse the XML Data</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>url_xml <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"esearch.fcgi?db=pubmed&amp;term=political+science&amp;retmax=5&amp;usehistory=n"</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>response_xml <span class="ot">&lt;-</span> <span class="fu">GET</span>(url_xml, <span class="fu">add_headers</span>(<span class="st">"User-Agent"</span> <span class="ot">=</span> <span class="st">"R/httr student-assignment"</span>))</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>xml_text     <span class="ot">&lt;-</span> <span class="fu">content</span>(response_xml, <span class="at">as =</span> <span class="st">"text"</span>, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>xml_doc      <span class="ot">&lt;-</span> <span class="fu">read_xml</span>(xml_text)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Show root node name and child structure</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Root node: "</span>); <span class="fu">print</span>(<span class="fu">xml_name</span>(xml_doc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Root node: </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "eSearchResult"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Direct children of root:</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Direct children of root:</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">xml_name</span>(<span class="fu">xml_children</span>(xml_doc)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Count"            "RetMax"           "RetStart"         "QueryKey"        
+[5] "WebEnv"           "IdList"           "TranslationSet"   "QueryTranslation"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract key fields from the eSearchResult envelope</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>count     <span class="ot">&lt;-</span> <span class="fu">xml_text</span>(<span class="fu">xml_find_first</span>(xml_doc, <span class="st">"//Count"</span>))</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>ret_max   <span class="ot">&lt;-</span> <span class="fu">xml_text</span>(<span class="fu">xml_find_first</span>(xml_doc, <span class="st">"//RetMax"</span>))</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>query_key <span class="ot">&lt;-</span> <span class="fu">xml_text</span>(<span class="fu">xml_find_first</span>(xml_doc, <span class="st">"//QueryKey"</span>))</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract all returned PubMed IDs</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>pmids <span class="ot">&lt;-</span> <span class="fu">xml_text</span>(<span class="fu">xml_find_all</span>(xml_doc, <span class="st">"//IdList/Id"</span>))</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Total records matching query:"</span>, count, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Total records matching query: 25410 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Records returned in this response:"</span>, ret_max, <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Records returned in this response: 5 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Build a display table</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df_xml <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Rank    =</span> <span class="fu">seq_along</span>(pmids),</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">PMID    =</span> pmids,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">URL     =</span> <span class="fu">paste0</span>(<span class="st">"https://pubmed.ncbi.nlm.nih.gov/"</span>, pmids)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>df_xml <span class="sc">|&gt;</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>(<span class="at">caption =</span> <span class="st">"PubMed IDs for 'political science' — Retrieved via XML API"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>, <span class="st">"condensed"</span>),</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small" data-quarto-postprocess="true">
+<caption>PubMed IDs for 'political science' — Retrieved via XML API</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">Rank</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">PMID</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">URL</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">42012382</td>
+<td style="text-align: left;">https://pubmed.ncbi.nlm.nih.gov/42012382</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">42012203</td>
+<td style="text-align: left;">https://pubmed.ncbi.nlm.nih.gov/42012203</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">42011884</td>
+<td style="text-align: left;">https://pubmed.ncbi.nlm.nih.gov/42011884</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">42011485</td>
+<td style="text-align: left;">https://pubmed.ncbi.nlm.nih.gov/42011485</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">42011412</td>
+<td style="text-align: left;">https://pubmed.ncbi.nlm.nih.gov/42011412</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;!DOCTYPE eSearchResult PUBLIC "-//NLM//DTD esearch 20060628//EN" "https://eutils.ncbi.nlm.nih.gov/eutils/dtd/20060628/esearch.dtd"&gt;
+&lt;eSearchResult&gt;&lt;Count&gt;25410&lt;/Count&gt;&lt;RetMax&gt;5&lt;/RetMax&gt;&lt;RetStart&gt;0&lt;/RetStart&gt;&lt;QueryKey&gt;1&lt;/QueryKey&gt;&lt;WebEnv&gt;MCID_69e806c228c8b16a190b58e8&lt;/WebEnv&gt;&lt;IdList&gt;
+&lt;Id&gt;42012382&lt;/Id&gt;
+&lt;Id&gt;42012203&lt;/Id&gt;
+&lt;Id&gt;42011884&lt;/Id&gt;
+&lt;Id&gt;42011485&lt;/Id&gt;
+&lt;Id&gt;42011412&lt;/Id&gt;
+&lt;/IdList&gt;&lt;TranslationSet&gt;&lt;Translation&gt;     &lt;From&gt;political science&lt;/From&gt;     &lt;To&gt;"Polit Sci"[Journal:__jid100969794] OR "PS Polit Sci Polit"[Journal:__jid101570959] OR "PS (Wash DC)"[Journal:__jid100971282] OR ("political"[All Fields] AND "science"[All Fields]) OR "political science" 
+...</code></pre>
+</div>
+</div>
+</section>
+<section id="xml-structure-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="xml-structure-analysis">3. XML Structure Analysis</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Format</strong></td>
+<td>XML 1.0, UTF-8, no namespace prefix</td>
+</tr>
+<tr class="even">
+<td><strong>Root element</strong></td>
+<td><code>&lt;eSearchResult&gt;</code> — single envelope per response</td>
+</tr>
+<tr class="odd">
+<td><strong>Key child elements</strong></td>
+<td><code>&lt;Count&gt;</code>, <code>&lt;RetMax&gt;</code>, <code>&lt;RetStart&gt;</code>, <code>&lt;QueryKey&gt;</code>, <code>&lt;WebEnv&gt;</code>, <code>&lt;IdList&gt;</code></td>
+</tr>
+<tr class="even">
+<td><strong>Record element</strong></td>
+<td><code>&lt;Id&gt;</code> inside <code>&lt;IdList&gt;</code> — one per returned PubMed article</td>
+</tr>
+<tr class="odd">
+<td><strong>Attributes</strong></td>
+<td>Minimal; used on <code>&lt;TranslationSet&gt;</code> and <code>&lt;QueryTranslation&gt;</code></td>
+</tr>
+<tr class="even">
+<td><strong>Nesting depth</strong></td>
+<td>2–3 levels: root → section elements → <code>&lt;Id&gt;</code> leaf nodes</td>
+</tr>
+<tr class="odd">
+<td><strong>Namespacing</strong></td>
+<td>None (flat, single-vocabulary document)</td>
+</tr>
+<tr class="even">
+<td><strong>Encoding</strong></td>
+<td>UTF-8 declared in XML prolog</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Structural characteristics:</strong> - Uses a <strong>data-centric XML</strong> model: machine-readable, tabular data expressed as nested elements rather than prose - <code>&lt;IdList&gt;</code> acts as a typed collection container — analogous to a JSON array — holding <code>&lt;Id&gt;</code> leaf nodes - The <code>&lt;WebEnv&gt;</code> and <code>&lt;QueryKey&gt;</code> elements implement <strong>server-side state</strong> (session caching), allowing subsequent <code>efetch</code> calls to retrieve full records without re-specifying the query - Fully <strong>well-formed</strong> and <strong>valid</strong> XML — can be validated against NCBI’s published DTD</p>
+</section>
+<section id="technologies-methods-1" class="level3">
+<h3 class="anchored" data-anchor-id="technologies-methods-1">4. Technologies &amp; Methods</h3>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-bordered caption-top table-sm small" data-quarto-postprocess="true">
+<caption>Technologies Powering the PubMed E-utilities XML API</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Layer</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Technology</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Data Format</td>
+<td style="text-align: left;">XML 1.0 (W3C standard), UTF-8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">API Style</td>
+<td style="text-align: left;">REST E-utilities (GET requests, resource-based URLs)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Backend Language</td>
+<td style="text-align: left;">Perl / Java (NCBI internal stack)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Database</td>
+<td style="text-align: left;">Entrez database system (NCBI proprietary) backed by PostgreSQL-family RDBMS</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Schema Validation</td>
+<td style="text-align: left;">DTD (Document Type Definition) published by NCBI</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Protocol</td>
+<td style="text-align: left;">HTTPS (TLS 1.2+)</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p><strong>Key points:</strong> - <strong>DTD validation</strong> provides formal grammar for each E-utility response type — stricter than schema-optional JSON - <strong>Server-side query history</strong> (<code>WebEnv</code> / <code>QueryKey</code>) is a distinctive XML API pattern: state persists on the server and is referenced by token in subsequent requests - <strong><code>xml2::read_xml()</code></strong> + XPath (<code>xml_find_all</code>, <code>xml_find_first</code>) navigates the DOM tree without namespace complexity - PubMed’s Entrez system stores records in a <strong>hierarchical document store</strong>, with XML being the canonical serialization format — the database schema directly mirrors the XML element hierarchy</p>
+<hr>
+</section>
+</section>
+<section id="comparative-summary" class="level2">
+<h2 class="anchored" data-anchor-id="comparative-summary">Comparative Summary</h2>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-bordered caption-top table-sm small" data-quarto-postprocess="true">
+<caption>JSON vs XML: Side-by-Side Comparison</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Dimension</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">JSON</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">XML</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Syntax</td>
+<td style="text-align: left;">Key-value pairs &amp; arrays `{}`</td>
+<td style="text-align: left;">Tagged elements &amp; attributes `&lt;tag&gt;`</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Verbosity</td>
+<td style="text-align: left;">Compact</td>
+<td style="text-align: left;">Verbose</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Schema enforcement</td>
+<td style="text-align: left;">Optional (JSON Schema, not required)</td>
+<td style="text-align: left;">Strict via XSD / DTD</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Namespacing</td>
+<td style="text-align: left;">None (flat key namespace)</td>
+<td style="text-align: left;">Namespaces via `xmlns:`</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Typical use case</td>
+<td style="text-align: left;">Web APIs, JavaScript apps, NoSQL stores</td>
+<td style="text-align: left;">Enterprise systems, government data, document exchange</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">R parsing package</td>
+<td style="text-align: left;">`jsonlite`, `rjson`</td>
+<td style="text-align: left;">`xml2`, `XML`</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Human readability</td>
+<td style="text-align: left;">High</td>
+<td style="text-align: left;">Moderate</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<section id="key-takeaways" class="level3">
+<h3 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h3>
+<ol type="1">
+<li><strong>JSON</strong> prioritizes simplicity and compactness — ideal for high-frequency REST calls in modern web apps. Open Library uses it with a Solr + PostgreSQL stack.</li>
+<li><strong>XML</strong> prioritizes rigor and interoperability — DTD/XSD validation and server-side session state make it the standard for scientific and government data exchange. PubMed E-utilities uses it with NCBI’s Entrez document-store backend.</li>
+<li>Both examples implement <strong>REST architectures</strong>: resources are identified by URLs, data is returned in a stateless response body, and clients parse the payload without server-side session state.</li>
+<li>In R, <strong><code>jsonlite::fromJSON()</code></strong> and <strong><code>xml2::read_xml()</code> + XPath</strong> provide symmetric workflows for consuming both formats programmatically.</li>
+</ol>
+</section>
+</section>
+</section>
+<section id="question-2-sql-exercises" class="level1">
+<h1>Question 2: SQL Exercises</h1>
+<section id="part-i-rewrite-except-as-a-left-outer-join" class="level2">
+<h2 class="anchored" data-anchor-id="part-i-rewrite-except-as-a-left-outer-join">Part (i): Rewrite EXCEPT as a LEFT OUTER JOIN</h2>
+<section id="original-query-uses-except-set-operation" class="level3">
+<h3 class="anchored" data-anchor-id="original-query-uses-except-set-operation">Original Query (uses EXCEPT / set operation)</h3>
+<div class="sourceCode" id="cb19"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">ID</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span>   student</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="kw">EXCEPT</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> s_id</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span>   advisor</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span>  i_ID <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Semantics:</strong> Return every student <code>ID</code> that does <em>not</em> appear in the <code>advisor</code> table paired with a non-NULL instructor ID — i.e., students who have <strong>no assigned advisor</strong>.</p>
+</section>
+<section id="rewrite-left-outer-join-no-subqueries-no-set-operations" class="level3">
+<h3 class="anchored" data-anchor-id="rewrite-left-outer-join-no-subqueries-no-set-operations">Rewrite — LEFT OUTER JOIN (no subqueries, no set operations)</h3>
+<div class="sourceCode" id="cb20"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span>  s.<span class="kw">ID</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span>    student <span class="kw">AS</span> s</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">OUTER</span> <span class="kw">JOIN</span> advisor <span class="kw">AS</span> a</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">ON</span>  s.<span class="kw">ID</span>   <span class="op">=</span> a.s_id</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">AND</span> a.i_ID <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span>   a.s_id <span class="kw">IS</span> <span class="kw">NULL</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> s.<span class="kw">ID</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="result" class="level3">
+<h3 class="anchored" data-anchor-id="result">Result</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/6.1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="650"></p>
+</figure>
+</div>
+<p>These four students have no matching row in the <code>advisor</code> table where <code>i_ID IS NOT NULL</code>, so they are returned by both the original <code>EXCEPT</code> query and the <code>LEFT OUTER JOIN</code> rewrite.</p>
+</section>
+</section>
+<section id="part-ii-instructors-who-teach-every-course-in-their-department" class="level2">
+<h2 class="anchored" data-anchor-id="part-ii-instructors-who-teach-every-course-in-their-department">Part (ii): Instructors Who Teach Every Course in Their Department</h2>
+<section id="query-relational-division-via-double-not-exists" class="level3">
+<h3 class="anchored" data-anchor-id="query-relational-division-via-double-not-exists">Query — Relational Division via Double NOT EXISTS</h3>
+<div class="sourceCode" id="cb21"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span>  i.<span class="kw">ID</span>,</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>        i.name</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span>    instructor <span class="kw">AS</span> i</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span>   <span class="kw">NOT</span> <span class="kw">EXISTS</span> (</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>            <span class="kw">SELECT</span>  c.course_id</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>            <span class="kw">FROM</span>    course <span class="kw">AS</span> c</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>            <span class="kw">WHERE</span>   c.dept_name <span class="op">=</span> i.dept_name</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>              <span class="kw">AND</span>   <span class="kw">NOT</span> <span class="kw">EXISTS</span> (</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>                        <span class="kw">SELECT</span> <span class="dv">1</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>                        <span class="kw">FROM</span>   teaches <span class="kw">AS</span> t</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>                        <span class="kw">WHERE</span>  t.<span class="kw">ID</span>        <span class="op">=</span> i.<span class="kw">ID</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>                          <span class="kw">AND</span>  t.course_id <span class="op">=</span> c.course_id</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>                    )</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> i.name;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="logic-double-not-exists-relational-division" class="level3">
+<h3 class="anchored" data-anchor-id="logic-double-not-exists-relational-division">Logic — Double NOT EXISTS (Relational Division)</h3>
+<p>The pattern translates as a chain of two negations:</p>
+<pre><code>NOT EXISTS (
+   -- "a course in my department..."
+   SELECT course_id FROM course WHERE dept_name = instructor's dept
+   AND NOT EXISTS (
+       -- "...that I have NOT taught"
+       SELECT 1 FROM teaches WHERE ID = instructor AND course_id = that course
+   )
+)</code></pre>
+<p>Combining both negations gives: <em>“There is no department course this instructor has not taught”</em> — logically equivalent to <em>“This instructor has taught every course in their department.”</em></p>
+<p>This is the standard <strong>relational division</strong> pattern: <code>{courses taught by i} ⊇ {courses in i's dept}</code></p>
+</section>
+<section id="result-1" class="level3">
+<h3 class="anchored" data-anchor-id="result-1">Result</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/6.2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="650"></p>
+</figure>
+</div>
+</section>
+</section>
+</section>
+<section id="question-3-r-and-postgresql" class="level1">
+<h1>Question 3: R and PostgreSQL</h1>
+<section id="a-import-the-full-database" class="level2">
+<h2 class="anchored" data-anchor-id="a-import-the-full-database">(a) Import the Full Database</h2>
+</section>
+<section id="b-run-rpostgres01.r" class="level2">
+<h2 class="anchored" data-anchor-id="b-run-rpostgres01.r">(b) Run RPostgres01.R</h2>
+<section id="install-load-packages" class="level3">
+<h3 class="anchored" data-anchor-id="install-load-packages">Install &amp; Load Packages</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"RPostgres"</span>, <span class="st">"DBI"</span>, <span class="st">"odbc"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RPostgres)   <span class="co"># PostgreSQL driver</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)         <span class="co"># Generic R Database Interface</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(odbc)        <span class="co"># ODBC driver interface</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="connect-to-postgresql" class="level3">
+<h3 class="anchored" data-anchor-id="connect-to-postgresql">Connect to PostgreSQL</h3>
+<blockquote class="blockquote">
+<p><strong>Fix for GSSAPI error:</strong> add <code>gssencmode = "disable"</code> to bypass the Kerberos/GSSAPI handshake that causes the <em>“Credential for asked mech-type mech not found”</em> error on local connections. Also ensure <code>password</code> matches your actual PostgreSQL user password.</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  RPostgres<span class="sc">::</span><span class="fu">Postgres</span>(),</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">dbname     =</span> <span class="st">"university"</span>,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">host       =</span> <span class="st">"localhost"</span>,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">port       =</span> <span class="dv">5432</span>,</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">user       =</span> <span class="st">"postgres"</span>,</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">password   =</span> <span class="st">"yourpassword!"</span>,  <span class="co"># ← replace with your actual password</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">gssencmode =</span> <span class="st">"disable"</span>         <span class="co"># ← fixes the GSSAPI security context error</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="a-query-all-instructors" class="level3">
+<h3 class="anchored" data-anchor-id="a-query-all-instructors">(a) Query: All Instructors</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>instructor_data <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, <span class="st">"SELECT * FROM instructor"</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(instructor_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small" data-quarto-postprocess="true">
+<caption>Query (a): head() of instructor table — 50 rows total in large-relations DB</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">ID</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">dept_name</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">salary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">63395</td>
+<td style="text-align: left;">McKinnon</td>
+<td style="text-align: left;">Cybernetics</td>
+<td style="text-align: right;">94333.99</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">78699</td>
+<td style="text-align: left;">Pingr</td>
+<td style="text-align: left;">Statistics</td>
+<td style="text-align: right;">59303.62</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">96895</td>
+<td style="text-align: left;">Mird</td>
+<td style="text-align: left;">Marketing</td>
+<td style="text-align: right;">119921.41</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4233</td>
+<td style="text-align: left;">Luo</td>
+<td style="text-align: left;">English</td>
+<td style="text-align: right;">88791.45</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4034</td>
+<td style="text-align: left;">Murata</td>
+<td style="text-align: left;">Athletics</td>
+<td style="text-align: right;">61387.56</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">50885</td>
+<td style="text-align: left;">Konstantinides</td>
+<td style="text-align: left;">Languages</td>
+<td style="text-align: right;">32570.50</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
