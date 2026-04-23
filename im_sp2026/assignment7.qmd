@@ -1,9 +1,9 @@
 ---
 title: "assignment7"
+author: Jing Tao
 format: html
 ---
 
-## Assignment 7: AI Exercise
 
 ### 1: Shiny App 1 – University Database Instructor Salaries
 
