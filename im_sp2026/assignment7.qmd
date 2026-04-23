@@ -1,0 +1,238 @@
+---
+title: "assignment7"
+format: html
+---
+
+## Assignment 7: AI Exercise
+
+### 1: Shiny App 1 – University Database Instructor Salaries
+
+#### (a) Enter Password to Access PostgreSQL Database
+
+The original `app.R` connects to a local PostgreSQL server.
+To access the `university` database, the `password` argument in
+`dbConnect()` must be set to your actual PostgreSQL password.
+
+```{r}
+#| eval: false
+
+library(shiny)
+library(DBI)
+library(RPostgres)
+library(ggplot2)
+
+ui <- fluidPage(
+  titlePanel("EPPS6354 Shiny Workshop 1: University Database - Instructor Salaries"),
+  mainPanel(
+    plotOutput("salaryPlot")
+  )
+)
+
+server <- function(input, output, session) {
+
+  # (a) Password entered to connect to local PostgreSQL server
+  con <- dbConnect(
+    RPostgres::Postgres(),
+    dbname   = "university",
+    host     = "localhost",
+    port     = 5432,
+    user     = "postgres",
+    password = "yourpassword!"  # Replace with your actual PostgreSQL password
+  )
+
+  session$onSessionEnded(function() {
+    dbDisconnect(con)
+  })
+
+  instructor_data <- reactive({
+    query <- "SELECT dept_name, AVG(salary) AS avg_salary
+              FROM instructor
+              GROUP BY dept_name;"
+    dbGetQuery(con, query)
+  })
+
+  output$salaryPlot <- renderPlot({
+    data <- instructor_data()
+    ggplot(data, aes(x = reorder(dept_name, avg_salary), y = avg_salary)) +
+      geom_bar(stat = "identity", fill = "steelblue") +
+      theme_minimal() +
+      labs(
+        title = "Average Instructor Salary by Department",
+        x = "Department",
+        y = "Average Salary"
+      ) +
+      theme(
+        axis.text.x = element_text(angle = 90, hjust = 1),
+        text = element_text(family = "Palatino")
+      )
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+#### (b) Change Salary Sorting from High to Low
+
+Adding a minus sign inside `reorder()` reverses the sort order to descending (high to low).
+
+```{r}
+#| eval: false
+
+library(shiny)
+library(DBI)
+library(RPostgres)
+library(ggplot2)
+
+ui <- fluidPage(
+  titlePanel("EPPS6354 Shiny Workshop 1: University Database - Instructor Salaries"),
+  mainPanel(
+    plotOutput("salaryPlot")
+  )
+)
+
+server <- function(input, output, session) {
+
+  con <- dbConnect(
+    RPostgres::Postgres(),
+    dbname   = "university",
+    host     = "localhost",
+    port     = 5432,
+    user     = "postgres",
+    password = "yourpassword!"
+  )
+
+  session$onSessionEnded(function() {
+    dbDisconnect(con)
+  })
+
+  instructor_data <- reactive({
+    query <- "SELECT dept_name, AVG(salary) AS avg_salary
+              FROM instructor
+              GROUP BY dept_name;"
+    dbGetQuery(con, query)
+  })
+
+  # (b) Changed reorder(dept_name, avg_salary) to reorder(dept_name, -avg_salary)
+  #     The negative sign sorts bars from high to low
+  output$salaryPlot <- renderPlot({
+    data <- instructor_data()
+    ggplot(data, aes(x = reorder(dept_name, -avg_salary), y = avg_salary)) +
+      geom_bar(stat = "identity", fill = "steelblue") +
+      theme_minimal() +
+      labs(
+        title = "Average Instructor Salary by Department (High to Low)",
+        x = "Department",
+        y = "Average Salary"
+      ) +
+      theme(
+        axis.text.x = element_text(angle = 90, hjust = 1),
+        text = element_text(family = "Palatino")
+      )
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+#### (c) Try Another Variable from Another Table
+
+```{r}
+#| eval: false
+
+library(shiny)
+library(DBI)
+library(RPostgres)
+library(ggplot2)
+
+ui <- fluidPage(
+  titlePanel("EPPS6354 Shiny Workshop 1: University Database - Student Credits"),
+  mainPanel(
+    plotOutput("creditPlot")
+  )
+)
+
+server <- function(input, output, session) {
+
+  con <- dbConnect(
+    RPostgres::Postgres(),
+    dbname   = "university",
+    host     = "localhost",
+    port     = 5432,
+    user     = "postgres",
+    password = "yourpassword!"
+  )
+
+  session$onSessionEnded(function() {
+    dbDisconnect(con)
+  })
+
+  # (c) Query the student table for avg total credits by department
+  student_data <- reactive({
+    query <- "SELECT dept_name, AVG(tot_cred) AS avg_cred
+              FROM student
+              GROUP BY dept_name;"
+    dbGetQuery(con, query)
+  })
+
+  output$creditPlot <- renderPlot({
+    data <- student_data()
+    ggplot(data, aes(x = reorder(dept_name, -avg_cred), y = avg_cred)) +
+      geom_bar(stat = "identity", fill = "coral") +
+      theme_minimal() +
+      labs(
+        title = "Average Student Total Credits by Department (High to Low)",
+        x = "Department",
+        y = "Average Total Credits"
+      ) +
+      theme(
+        axis.text.x = element_text(angle = 90, hjust = 1),
+        text = element_text(family = "Palatino")
+      )
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+### 2: Shiny App 2 – Old Faithful Geyser Data
+
+#### (a) Change the Color of the Bar Chart
+
+```{r}
+#| eval: false
+
+library(shiny)
+
+ui <- fluidPage(
+  titlePanel("EPPS6354 Shiny Workshop 2: Old Faithful Geyser Data"),
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput(inputId = "bins",
+                  label = "Number of bins:",
+                  min = 1,
+                  max = 50,
+                  value = 30)
+    ),
+    mainPanel(
+      plotOutput(outputId = "distPlot")
+    )
+  )
+)
+
+server <- function(input, output) {
+
+  output$distPlot <- renderPlot({
+
+    x    <- faithful$waiting
+    bins <- seq(min(x), max(x), length.out = input$bins + 1)
+
+    # (a) Changed col from "blue" to "tomato"
+    hist(x, breaks = bins, col = "tomato", border = "white",
+         xlab = "Waiting time to next eruption (in mins)",
+         main = "Histogram of waiting times")
+
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
