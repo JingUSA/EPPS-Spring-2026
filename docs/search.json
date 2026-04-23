@@ -901,5 +901,12 @@
     "title": "Spring 2026 Course Portfolio",
     "section": "Courses",
     "text": "Courses\n\nEPPS 6323 Knowledge Mining (Spring 2026)\nEPPS 6354 Information Management (Spring 2026)"
+  },
+  {
+    "objectID": "im_sp2026/assignment8.html",
+    "href": "im_sp2026/assignment8.html",
+    "title": "assignment8",
+    "section": "",
+    "text": "Step 1(a): Build NBA Database on Local PostgreSQL\nCreated a database named NBAplayers in PostgreSQL (port 5433) and populated it using NBAPlayers.sql.\n\nlibrary(shiny)\nlibrary(DBI)\nlibrary(RPostgres)\n\nui &lt;- fluidPage(\n  sliderInput(\"nrows\", \"Enter the number of rows to display:\",\n              min = 1, max = 519, value = 15),\n  tableOutput(\"tbl\")\n)\n\nserver &lt;- function(input, output) {\n  output$tbl &lt;- renderTable({\n    conn &lt;- dbConnect(\n      RPostgres::Postgres(),\n      dbname = 'NBAplayers',\n      port   = 5433,\n      user   = 'jingtao'\n    )\n    on.exit(dbDisconnect(conn), add = TRUE)\n    dbGetQuery(conn, paste0(\n      \"SELECT * FROM player WHERE is_active = '1' LIMIT \",\n      input$nrows, \";\"))\n  })\n}\n\nshinyApp(ui = ui, server = server)\n\n\n\nStep 1(b): Export to SQLite\nImported NBAPlayers.sql into DB Browser for SQLite and saved as nba.db.\n\n\nStep 1(c): Embed SQLite in Shiny\n\nlibrary(shiny)\nlibrary(DBI)\nlibrary(RSQLite)\n\nui &lt;- fluidPage(\n  sliderInput(\"nrows\", \"Enter the number of rows to display:\",\n              min = 1, max = 519, value = 15),\n  dataTableOutput(\"tbl\")\n)\n\nserver &lt;- function(input, output) {\n  table &lt;- renderDataTable({\n    conn &lt;- dbConnect(RSQLite::SQLite(), dbname = 'nba.db')\n    sql &lt;- \"SELECT p.id, p.first_name, p.last_name, p.full_name,\n            pp.urlPlayerHeadshot\n            FROM player p\n            INNER JOIN player_photos pp ON pp.idplayer = p.id\n            WHERE p.is_active = 1\"\n    on.exit(dbDisconnect(conn), add = TRUE)\n    table_df &lt;- dbGetQuery(conn, paste0(sql, \" LIMIT \", input$nrows, \";\"))\n    table_df$headshot &lt;- paste0('&lt;img src=\"', table_df$urlPlayerHeadshot, '\"&gt;&lt;/img&gt;')\n    table_df[c('full_name', 'headshot')]\n  }, escape = FALSE)\n  output$tbl &lt;- table\n}\n\nshinyApp(ui = ui, server = server)\n\n\n\nStep 1(d): Deploy on Shinyapps.io\n\nlibrary(rsconnect)\nrsconnect::deployApp(\"~/Desktop/EPPS-Spring-2026/im_sp2026/nba_app\")\n\n\n\nStep 2: GitHub Website Link\nThe deployed NBA Shiny app is available at: https://jingusa.shinyapps.io/nba_app/"
   }
 ]

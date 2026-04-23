@@ -1,0 +1,10 @@
+name: nba_app
+title:
+username: jingusa
+account: jingusa
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 17216405
+bundleId: 11897621
+url: https://jingusa.shinyapps.io/nba_app/
+version: 1

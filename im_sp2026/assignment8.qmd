@@ -1,0 +1,92 @@
+---
+title: "assignment8"
+author: Jing Tao
+format: html
+---
+
+### Step 1(a): Build NBA Database on Local PostgreSQL
+
+Created a database named `NBAplayers` in PostgreSQL (port 5433) and populated it using `NBAPlayers.sql`.
+
+```{r}
+#| eval: false
+
+library(shiny)
+library(DBI)
+library(RPostgres)
+
+ui <- fluidPage(
+  sliderInput("nrows", "Enter the number of rows to display:",
+              min = 1, max = 519, value = 15),
+  tableOutput("tbl")
+)
+
+server <- function(input, output) {
+  output$tbl <- renderTable({
+    conn <- dbConnect(
+      RPostgres::Postgres(),
+      dbname = 'NBAplayers',
+      port   = 5433,
+      user   = 'jingtao'
+    )
+    on.exit(dbDisconnect(conn), add = TRUE)
+    dbGetQuery(conn, paste0(
+      "SELECT * FROM player WHERE is_active = '1' LIMIT ",
+      input$nrows, ";"))
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+### Step 1(b): Export to SQLite
+
+Imported `NBAPlayers.sql` into DB Browser for SQLite and saved as `nba.db`.
+
+### Step 1(c): Embed SQLite in Shiny
+
+```{r}
+#| eval: false
+
+library(shiny)
+library(DBI)
+library(RSQLite)
+
+ui <- fluidPage(
+  sliderInput("nrows", "Enter the number of rows to display:",
+              min = 1, max = 519, value = 15),
+  dataTableOutput("tbl")
+)
+
+server <- function(input, output) {
+  table <- renderDataTable({
+    conn <- dbConnect(RSQLite::SQLite(), dbname = 'nba.db')
+    sql <- "SELECT p.id, p.first_name, p.last_name, p.full_name,
+            pp.urlPlayerHeadshot
+            FROM player p
+            INNER JOIN player_photos pp ON pp.idplayer = p.id
+            WHERE p.is_active = 1"
+    on.exit(dbDisconnect(conn), add = TRUE)
+    table_df <- dbGetQuery(conn, paste0(sql, " LIMIT ", input$nrows, ";"))
+    table_df$headshot <- paste0('<img src="', table_df$urlPlayerHeadshot, '"></img>')
+    table_df[c('full_name', 'headshot')]
+  }, escape = FALSE)
+  output$tbl <- table
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+### Step 1(d): Deploy on Shinyapps.io
+
+```{r}
+#| eval: false
+
+library(rsconnect)
+rsconnect::deployApp("~/Desktop/EPPS-Spring-2026/im_sp2026/nba_app")
+```
+
+### Step 2: GitHub Website Link
+
+The deployed NBA Shiny app is available at:
+[https://jingusa.shinyapps.io/nba_app/](https://jingusa.shinyapps.io/nba_app/)
