@@ -54,6 +54,6 @@ website:
             href: JingTAO_FinalReport_IM.pdf
           - text: "COID GitHub Repository (Source Code)"
             href: https://github.com/JingUSA/COID
-          - text: "Interactive COID Database"
+          - text: "Interactive COID Database(SQL)"
             href: https://lite.datasette.io/?url=https://raw.githubusercontent.com/JingUSA/COID/main/data/coid.db#/coid
 
