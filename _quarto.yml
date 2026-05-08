@@ -52,8 +52,9 @@ website:
             href: ProgressReport2_JingTAO.pdf
           - text: "Final Report"
             href: JingTAO_FinalReport_IM.pdf
+          - text: "COID SQL Query Interface"
+            href: https://lite.datasette.io/?url=https://raw.githubusercontent.com/JingUSA/COID/main/data/coid.db#/coid
           - text: "COID GitHub Repository (Source Code)"
             href: https://github.com/JingUSA/COID
-          - text: "Interactive COID Database(SQL)"
-            href: https://lite.datasette.io/?url=https://raw.githubusercontent.com/JingUSA/COID/main/data/coid.db#/coid
+          
 
