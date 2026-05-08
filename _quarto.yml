@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: docs
+  resources:
+  - im_sp2026/*.pdf
 
 website:
   navbar:
@@ -47,11 +49,11 @@ website:
           - text: "Assignment 8"
             href: im_sp2026/assignment8.html
           - text: "Progress Report 1"
-            href: ProgressReport1_JingTAO.pdf
+            href: im_sp2026/ProgressReport1_JingTAO.pdf
           - text: "Progress Report 2"
-            href: ProgressReport2_JingTAO.pdf
+            href: im_sp2026/ProgressReport2_JingTAO.pdf
           - text: "Final Report"
-            href: JingTAO_FinalReport_IM.pdf
+            href: im_sp2026/FinalReport.pdf
           - text: "COID SQL Query Interface"
             href: https://lite.datasette.io/?url=https://raw.githubusercontent.com/JingUSA/COID/main/data/coid.db#/coid
           - text: "COID GitHub Repository (Source Code)"
