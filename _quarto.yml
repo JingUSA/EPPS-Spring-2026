@@ -46,4 +46,14 @@ website:
             href: im_sp2026/assignment7.html
           - text: "Assignment 8"
             href: im_sp2026/assignment8.html
+          - text: "Progress Report 1"
+            href: ProgressReport1_JingTAO.pdf
+          - text: "Progress Report 2"
+            href: ProgressReport2_JingTAO.pdf
+          - text: "Final Report"
+            href: JingTAO_FinalReport_IM.pdf
+          - text: "COID GitHub Repository (Source Code)"
+            href: https://github.com/JingUSA/COID
+          - text: "Interactive COID Database"
+            href: https://lite.datasette.io/?url=https://raw.githubusercontent.com/JingUSA/COID/main/data/coid.db#/coid
 
