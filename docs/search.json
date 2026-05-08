@@ -908,5 +908,432 @@
     "title": "Spring 2026 Course Portfolio",
     "section": "Courses",
     "text": "Courses\n\nEPPS 6323 Knowledge Mining (Spring 2026)\nEPPS 6354 Information Management (Spring 2026)"
+  },
+  {
+    "objectID": "km_sp2026/Group Final Report.html#project-recap",
+    "href": "km_sp2026/Group Final Report.html#project-recap",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Project Recap",
+    "text": "Project Recap\n\nU.S. states have introduced a dramatic wave of AI-related legislation in recent years\nyet only a small fraction of these bills ultimately become law.\nUnderstanding which bills succeed requires moving beyond aggregate adoption counts.\n\nPartisanship;\nEconomic conditions;\nRegulation mechanisms and transparency;"
+  },
+  {
+    "objectID": "km_sp2026/Group Final Report.html#state-ai-bill-count-by-year",
+    "href": "km_sp2026/Group Final Report.html#state-ai-bill-count-by-year",
+    "title": "AI Policy Outcome Prediction",
+    "section": "State AI bill count by year",
+    "text": "State AI bill count by year"
+  },
+  {
+    "objectID": "km_sp2026/Group Final Report.html#ai-bill-count-and-passage-by-state",
+    "href": "km_sp2026/Group Final Report.html#ai-bill-count-and-passage-by-state",
+    "title": "AI Policy Outcome Prediction",
+    "section": "AI bill count and passage by state",
+    "text": "AI bill count and passage by state"
+  },
+  {
+    "objectID": "km_sp2026/Group Final Report.html#topic-and-entity-type-distribution",
+    "href": "km_sp2026/Group Final Report.html#topic-and-entity-type-distribution",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Topic and entity-type distribution",
+    "text": "Topic and entity-type distribution\n\n\nBill topics (NCSL labels)\n\n\n\n\n\n\nExtracted entity types"
+  },
+  {
+    "objectID": "km_sp2026/Group Final Report.html#ai-bill-sponsorship-by-party",
+    "href": "km_sp2026/Group Final Report.html#ai-bill-sponsorship-by-party",
+    "title": "AI Policy Outcome Prediction",
+    "section": "AI bill sponsorship by party",
+    "text": "AI bill sponsorship by party"
+  },
+  {
+    "objectID": "km_sp2026/Group Final Report.html#task-definition",
+    "href": "km_sp2026/Group Final Report.html#task-definition",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Task Definition",
+    "text": "Task Definition\nAdopted LLM driven data mining methods for:\n\nData annotation\nData enrichment\nNamed Entity Recognition\nPerformance benchmarking\nQuestion Answering AI Application with RAG"
+  },
+  {
+    "objectID": "km_sp2026/Group Final Report.html#annotation-pipeline",
+    "href": "km_sp2026/Group Final Report.html#annotation-pipeline",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Annotation pipeline",
+    "text": "Annotation pipeline"
+  },
+  {
+    "objectID": "km_sp2026/Group Final Report.html#annotation-results",
+    "href": "km_sp2026/Group Final Report.html#annotation-results",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Annotation Results",
+    "text": "Annotation Results\n\nDemocrat: 953\nRepublican: 508\nCommittee: 314 (all committee/office/body authors, including the previously blank ones)\nBipartisan: 84\nNonpartisan: 18 (Nebraska unicameral + existing entries)"
+  },
+  {
+    "objectID": "km_sp2026/Group Final Report.html#baseline-model-target-features",
+    "href": "km_sp2026/Group Final Report.html#baseline-model-target-features",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Baseline Model — Target & Features",
+    "text": "Baseline Model — Target & Features\n\nTarget\n\nadopted = 1 if status starts with “Enacted” or “Adopted”\n\nFeatures\n\nstate_adopt_rate — per-state historical adoption rate\nlog_wordcount — log(summary word count + 1)\ntopic_gov — topics contains “Government Use”\nUR — state_partisanship == “Republican”\nRepublican — author_partisanship == “Republican”\nyear_2025 — year == 2025\ndefn_found — summary contains definition-related keywords"
+  },
+  {
+    "objectID": "km_sp2026/Group Final Report.html#baseline-model-specification",
+    "href": "km_sp2026/Group Final Report.html#baseline-model-specification",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Baseline Model — Specification",
+    "text": "Baseline Model — Specification\n\nLogistic Regression, class_weight = \"balanced\", threshold = 0.50\n5-fold stratified CV, StandardScaler per fold"
+  },
+  {
+    "objectID": "km_sp2026/Group Final Report.html#cross-validation-results",
+    "href": "km_sp2026/Group Final Report.html#cross-validation-results",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Cross-validation results",
+    "text": "Cross-validation results"
+  },
+  {
+    "objectID": "km_sp2026/Group Final Report.html#per-fold-performance-and-predictor-importance",
+    "href": "km_sp2026/Group Final Report.html#per-fold-performance-and-predictor-importance",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Per-fold performance and predictor importance",
+    "text": "Per-fold performance and predictor importance"
+  },
+  {
+    "objectID": "km_sp2026/Group Final Report.html#extraction-quadruplets-with-evidence-spans",
+    "href": "km_sp2026/Group Final Report.html#extraction-quadruplets-with-evidence-spans",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Extraction Quadruplets with Evidence Spans",
+    "text": "Extraction Quadruplets with Evidence Spans\n\n\n\n\n\n\n\nKey\nValue\n\n\n\n\nentity\nwhat / who is regulated\n\n\ntype\ncategory of the entity\n\n\nattribute\nregulatory mechanism (mandate, prohibition, disclosure, …)\n\n\nvalue\nspecific content of that mechanism\n\n\n\n\nEvery field is anchored to a verbatim evidence span drawn from the bill text — traceability is a hard contract, not a hint\nNo fine-tuning, no pre-defined taxonomy"
+  },
+  {
+    "objectID": "km_sp2026/Group Final Report.html#multi-turn-ner-workflow",
+    "href": "km_sp2026/Group Final Report.html#multi-turn-ner-workflow",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Multi-Turn NER Workflow",
+    "text": "Multi-Turn NER Workflow"
+  },
+  {
+    "objectID": "km_sp2026/Group Final Report.html#skill-driven-agent-ner-workflow",
+    "href": "km_sp2026/Group Final Report.html#skill-driven-agent-ner-workflow",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Skill-Driven Agent NER Workflow",
+    "text": "Skill-Driven Agent NER Workflow"
+  },
+  {
+    "objectID": "km_sp2026/Group Final Report.html#evaluation-four-llm-as-judge-tests",
+    "href": "km_sp2026/Group Final Report.html#evaluation-four-llm-as-judge-tests",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Evaluation: Four LLM-as-Judge Tests",
+    "text": "Evaluation: Four LLM-as-Judge Tests"
+  },
+  {
+    "objectID": "km_sp2026/Group Final Report.html#fine-tuning-model-specification",
+    "href": "km_sp2026/Group Final Report.html#fine-tuning-model-specification",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Fine-tuning Model Specification",
+    "text": "Fine-tuning Model Specification\n\nModel: answerdotai/ModernBERT-base (encoder; HF Trainer + WeightedLossTrainer)\nSequence length: max_length = 1024, covers 91% of rows fully\nSweep: K = 5 folds × S = 3 seeds (13, 42, 1729) = 15 cells; early-stopping patience 2 on val_auroc\nOptimizer: AdamW, lr = 2.0e-5, weight_decay = 0.01, warmup_ratio = 0.06, bf16\nClass weighting: inverse-frequency weights for unbalanced classes"
+  },
+  {
+    "objectID": "km_sp2026/Group Final Report.html#fine-tuning-results",
+    "href": "km_sp2026/Group Final Report.html#fine-tuning-results",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Fine-tuning Results",
+    "text": "Fine-tuning Results\n\n\n\n\n\n\n\n\n\n\nMean test AUROC = 0.784 across 15 cells (5 folds × 3 seeds)\nRange across cells: ≈ 0.75 – 0.82\nTight distribution — not a single-fold artifact"
+  },
+  {
+    "objectID": "km_sp2026/Group Final Report.html#fine-tuning-results-1",
+    "href": "km_sp2026/Group Final Report.html#fine-tuning-results-1",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Fine-tuning Results",
+    "text": "Fine-tuning Results\n\n\nConvergence around epochs 3–4, then a small slow decay — early-stopping (patience 2) on val_auroc catches it. Spread across folds is the dominant source of variance, not seed."
+  },
+  {
+    "objectID": "km_sp2026/Group Final Report.html#baseline-vs-fine-tune",
+    "href": "km_sp2026/Group Final Report.html#baseline-vs-fine-tune",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Baseline vs Fine-tune",
+    "text": "Baseline vs Fine-tune\n\n\n\n\n\n\n\n\n\nMetric\nBaseline (LR, 7 features)\nModernBERT-base (fine-tuned)\n\n\n\n\nMean test AUROC\n0.802\n0.784\n\n\nAggregation\n5-fold CV\n5 folds × 3 seeds = 15 cells\n\n\nInputs\n7 hand-crafted features\ntitle + summary + entities text + 5 metadata fields"
+  },
+  {
+    "objectID": "km_sp2026/Group Final Report.html#qa-app-demonstration",
+    "href": "km_sp2026/Group Final Report.html#qa-app-demonstration",
+    "title": "AI Policy Outcome Prediction",
+    "section": "QA App Demonstration",
+    "text": "QA App Demonstration\nLaunch AI Bills QA App\nApp Documentation"
+  },
+  {
+    "objectID": "km_sp2026/final_report/AI Bills QA App.html",
+    "href": "km_sp2026/final_report/AI Bills QA App.html",
+    "title": "AI Bills QA App",
+    "section": "",
+    "text": "Launch AI Bills QA App \n\nThe application opens in a new tab because it is hosted separately from this Quarto course site."
+  },
+  {
+    "objectID": "km_sp2026/final_report/AI Bills QA App.html#launch",
+    "href": "km_sp2026/final_report/AI Bills QA App.html#launch",
+    "title": "AI Bills QA App",
+    "section": "",
+    "text": "Launch AI Bills QA App \n\nThe application opens in a new tab because it is hosted separately from this Quarto course site."
+  },
+  {
+    "objectID": "km_sp2026/final_report/AI Bills QA App.html#why-this-app",
+    "href": "km_sp2026/final_report/AI Bills QA App.html#why-this-app",
+    "title": "AI Bills QA App",
+    "section": "Why This App?",
+    "text": "Why This App?\nU.S. states have introduced a dramatic wave of AI-related legislation in recent years, yet only a small fraction of these bills ultimately become law. Understanding this landscape requires more than reading aggregate adoption counts which requires engaging directly with the text of individual bills across dozens of jurisdictions.\nThis project treats AI legislation as a data mining problem. The corpus spans 1,879 bills across 53 jurisdictions and three legislative years (137 bills from 2023, 480 from 2024, 1,262 from 2025), covering topics from transparency and accountability requirements to regulatory frameworks and consumer protections. Because the bills vary widely in scope, framing, and language, navigating them manually is impractical. The QA app addresses that problem directly: it lets users ask natural-language questions against the full bill corpus and receive grounded answers drawn from retrieved bill passages, with citations back to the source text.\nThe app supports the broader research goal of predicting bill enactment from legislative, political, and economic factors. Analysts can use it to quickly surface how specific provisions, such as definitions of high-risk AI, transparency mandates, or enforcement mechanisms, are distributed across states, without reading every bill in full. It is also designed to make the dataset accessible to non-technical audiences who want to explore AI policy trends without writing code."
+  },
+  {
+    "objectID": "km_sp2026/final_report/AI Bills QA App.html#usage-guide",
+    "href": "km_sp2026/final_report/AI Bills QA App.html#usage-guide",
+    "title": "AI Bills QA App",
+    "section": "Usage Guide",
+    "text": "Usage Guide\n\nInputs\n\n\n\n\n\n\n\n\nInput\nWhat the user provides\nNotes\n\n\n\n\nQuestion\nA natural-language question about U.S. state AI bills\nExample: “Which states propose transparency requirements for high-risk AI?”\n\n\nAnswer model\nOne model selected from the dropdown menu\nThe chosen model drives both the planner agent and the summarize/compare worker tools, so one selection swaps both halves of the pipeline\n\n\nShow planner trace\nOptional checkbox on the form\nWhen checked, the response includes the planner’s internal messages, tool calls, and tool results so the user can audit how the answer was produced\n\n\n\n\n\nOutputs\n\n\n\n\n\n\n\n\nOutput\nWhat the app returns\nWhy it matters\n\n\n\n\nAnswer\nA direct natural-language response to the question\nGives a readable synthesis instead of raw search results\n\n\nCitations\nRanked supporting passages from retrieved bill chunks\nGrounds the answer in source text rather than free-form generation\n\n\nBill metadata\nBill ID, state, title, status, offsets, and retrieval score\nHelps the user inspect where the evidence came from\n\n\nInferred filters\nThe state, year, status, and topic filters parsed from the question by the filter-extractor pass\nMakes the pre-retrieval filter narrowing visible so the user can catch over- or under-constraint\n\n\nPlanner trace (optional)\nPer-turn planner messages, tool calls, and tool results, shown when the user checks “Show planner trace”\nTurns the agent loop from a black box into an inspectable trace for debugging and trust\n\n\nError / validation feedback\nA clear message if the question is missing or a request fails\nMakes failure states explicit rather than silent\n\n\n\n\n\nSuggested Query Types\n\nCross-state comparison questions\nDefinition questions about bill language\nQuestions about requirements, restrictions, penalties, or enforcement\nQuestions about trends across recent AI legislation"
+  },
+  {
+    "objectID": "km_sp2026/final_report/AI Bills QA App.html#architecture",
+    "href": "km_sp2026/final_report/AI Bills QA App.html#architecture",
+    "title": "AI Bills QA App",
+    "section": "Architecture",
+    "text": "Architecture\n\nTech Stack\n\n\n\n\n\n\n\n\nLayer\nPurpose\nDesign choice\n\n\n\n\nInterface layer\nAccepts natural-language questions and returns answers with citations\nA lightweight web interface keeps the app accessible to non-technical users\n\n\nOrchestration layer\nCoordinates retrieval, model selection, and response assembly\nOne shared QA service keeps the control flow separate from the UI\n\n\nRetrieval layer\nFinds relevant bill passages before answer generation\nDense vector retrieval is the primary method, with BM25-style lexical fallback for robustness\n\n\nGeneration layer\nProduces grounded answers from retrieved evidence\nThe app uses Retrieval-Augmented Generation (RAG) rather than answering from the model alone\n\n\nModel access layer\nConnects the app to hosted or local language models through one consistent interface\nA unified OpenAI-compatible API layer reduces provider lock-in\n\n\nPersistence layer\nReuses precomputed retrieval artifacts across sessions\nChunk metadata, embedding caches, and index state are stored for faster startup and lower serving cost\n\n\n\n\n\nPipeline\n\nThe bill corpus is split into overlapping text chunks so long legislative documents can be searched at passage level.\nThe chunks are indexed and stored on disk, including embeddings and per-chunk metadata (state, year, status bucket, topics) so the retrieval layer can both rank semantically and filter by metadata fields. The index is cached across sessions.\nWhen a user submits a question, a lightweight filter-extractor LLM pass parses the question into a semantic rewrite and a set of metadata filters (state, year, status, topics). Filters accept either a single value or a list, so “California or Texas” or “enacted or pending” resolve to OR-within-field semantics while constraints from different fields still AND together.\nA planner agent then runs a multi-turn tool-calling loop with four primitives: list_bills (filtered, semantically-ranked candidate list), get_bill_content (full text for one bill), summarize_bill (worker-LLM summary of one bill), and compare_bills (worker-LLM side-by-side across several bills). The planner decides how many calls to make, in what order, within the per-question budgets configured in settings/qa_config.yml.\nIf a ready vector index is unavailable, the same tools fall back to BM25-style lexical retrieval so question answering can still run.\nThe planner writes a final grounded answer from the evidence it collected, and the app returns a natural-language answer together with ranked citations, bill metadata, the inferred filters, and — when the user checks “Show planner trace” — the per-turn planner messages, tool calls, and tool results.\n\n\n\nTools Used\n\n\n\n\n\n\n\n\nTool / platform\nRole\nUsage in this project\n\n\n\n\nQuarto + GitHub Pages\nDocumentation and launch surface\nHosts this project page and the external launch link\n\n\nFlask\nWeb application framework\nServes the browser interface and the QA API\n\n\nRender\nApplication hosting\nHosts the live QA web app\n\n\nOpenRouter\nHosted model gateway\nProvides a unified OpenAI-compatible endpoint for model access\n\n\nopenai/text-embedding-3-small\nEmbedding model\nConverts bill chunks and user questions into vectors for semantic retrieval\n\n\ngoogle/gemini-2.5-flash\nDefault answer model\nGenerates the default grounded answer from retrieved bill text\n\n\nAdditional hosted models\nAlternative answer models\nLets users compare answer generation across multiple LLMs\n\n\nOptional local OpenAI-compatible runtime\nLocal model routing\nAdds a local answer model when a healthy local runtime is available"
+  },
+  {
+    "objectID": "km_sp2026/final_report/AI Bills QA App.html#versions",
+    "href": "km_sp2026/final_report/AI Bills QA App.html#versions",
+    "title": "AI Bills QA App",
+    "section": "Versions",
+    "text": "Versions\nThe QA app evolved through three distinct retrieval-and-answer strategies. Each version is evaluated against the same 100-question ground-truth set.\n\nV1 — single-pass RAG (baseline)\nThe user’s question is embedded directly, dense retrieval returns the top-k chunks over the entire index with no filtering, and those chunks are stuffed into a single grounded-answer prompt. No LLM runs before retrieval, and there is no agent or tool-calling step. This is the classic textbook RAG flow and the starting point for the app.\n\n\nV1 → V2 — self-query RAG (filter extractor added)\n\nA cheap filter-extractor LLM pass is introduced before retrieval. It parses the question into a semantic rewrite plus a metadata-filter dictionary (state, year, status, topics).\nThe retriever now masks its candidate set by those filters before ranking by dense similarity, so the answer prompt only ever sees passages from the right jurisdictions and years.\nThe answer-generation prompt itself is unchanged from V1.\nNet effect: reduces retrieval noise on filter-heavy questions, but introduces new failures when the extractor over-constrains (e.g. forces a single state when the question names several, or concatenates two topic labels into one string).\n\n\n\nV2 → V3 — agentic RAG with planner (current)\n\nA planner LLM is added on top of the V2 primitives. It drives a multi-turn tool-calling loop built on src/agent/loop.py and can issue zero-to-many tool calls per question.\nFour tools are exposed: list_bills, get_bill_content, summarize_bill, compare_bills. summarize_bill and compare_bills call their own worker LLM, which lets the planner answer list/compare/aggregate questions without putting the whole corpus in one prompt.\nFilter logic now supports OR-within-field (e.g. state in [CA, TX], status_bucket in [Enacted, Pending]) while still AND-ing across different fields.\nThe UI’s model dropdown now drives both the planner model and the worker model in one selection.\nAn optional per-request “Show planner trace” checkbox captures the planner’s internal messages, tool calls, and tool results for inspection, with a YAML-controlled default for the checkbox state.\nPer-question budgets (max_planner_turns, max_tool_calls, max_worker_calls, max_bills_per_list) are configurable in settings/qa_config.yml instead of hardcoded.\n\n\n\nCross-version evaluation (100-question ground truth)\n\n\n\n\n\n\n\n\n\n\nVersion\nPass rate\nMean keyword\nMean citation F1\nMean latency (s)\n\n\n\n\nV1 — single-pass RAG\n54%\n0.58\n0.12\n1.46\n\n\nV2 — self-query RAG\n59%\n0.63\n0.38\n2.65\n\n\nV3 — agentic RAG with planner\n79%\n0.84\n0.30\n6.65\n\n\n\nV3 is the deployed version. It trades higher latency for a 25-pp pass-rate gain over V1 and a 20-pp gain over V2, with the largest improvement on easy questions (96% vs 56% V1) where filter-and-list patterns dominate."
+  },
+  {
+    "objectID": "km_sp2026/final_report/ai_bills_qa.html",
+    "href": "km_sp2026/final_report/ai_bills_qa.html",
+    "title": "AI Bills QA App",
+    "section": "",
+    "text": "Launch AI Bills QA App \n\nThe application opens in a new tab because it is hosted separately from this Quarto course site."
+  },
+  {
+    "objectID": "km_sp2026/final_report/ai_bills_qa.html#launch",
+    "href": "km_sp2026/final_report/ai_bills_qa.html#launch",
+    "title": "AI Bills QA App",
+    "section": "",
+    "text": "Launch AI Bills QA App \n\nThe application opens in a new tab because it is hosted separately from this Quarto course site."
+  },
+  {
+    "objectID": "km_sp2026/final_report/ai_bills_qa.html#why-this-app",
+    "href": "km_sp2026/final_report/ai_bills_qa.html#why-this-app",
+    "title": "AI Bills QA App",
+    "section": "Why This App?",
+    "text": "Why This App?\nU.S. states have introduced a dramatic wave of AI-related legislation in recent years, yet only a small fraction of these bills ultimately become law. Understanding this landscape requires more than reading aggregate adoption counts which requires engaging directly with the text of individual bills across dozens of jurisdictions.\nThis project treats AI legislation as a data mining problem. The corpus spans 1,879 bills across 53 jurisdictions and three legislative years (137 bills from 2023, 480 from 2024, 1,262 from 2025), covering topics from transparency and accountability requirements to regulatory frameworks and consumer protections. Because the bills vary widely in scope, framing, and language, navigating them manually is impractical. The QA app addresses that problem directly: it lets users ask natural-language questions against the full bill corpus and receive grounded answers drawn from retrieved bill passages, with citations back to the source text.\nThe app supports the broader research goal of predicting bill enactment from legislative, political, and economic factors. Analysts can use it to quickly surface how specific provisions, such as definitions of high-risk AI, transparency mandates, or enforcement mechanisms, are distributed across states, without reading every bill in full. It is also designed to make the dataset accessible to non-technical audiences who want to explore AI policy trends without writing code."
+  },
+  {
+    "objectID": "km_sp2026/final_report/ai_bills_qa.html#usage-guide",
+    "href": "km_sp2026/final_report/ai_bills_qa.html#usage-guide",
+    "title": "AI Bills QA App",
+    "section": "Usage Guide",
+    "text": "Usage Guide\n\nInputs\n\n\n\n\n\n\n\n\nInput\nWhat the user provides\nNotes\n\n\n\n\nQuestion\nA natural-language question about U.S. state AI bills\nExample: “Which states propose transparency requirements for high-risk AI?”\n\n\nAnswer model\nOne model selected from the dropdown menu\nThe chosen model drives both the planner agent and the summarize/compare worker tools, so one selection swaps both halves of the pipeline\n\n\nShow planner trace\nOptional checkbox on the form\nWhen checked, the response includes the planner’s internal messages, tool calls, and tool results so the user can audit how the answer was produced\n\n\n\n\n\nOutputs\n\n\n\n\n\n\n\n\nOutput\nWhat the app returns\nWhy it matters\n\n\n\n\nAnswer\nA direct natural-language response to the question\nGives a readable synthesis instead of raw search results\n\n\nCitations\nRanked supporting passages from retrieved bill chunks\nGrounds the answer in source text rather than free-form generation\n\n\nBill metadata\nBill ID, state, title, status, offsets, and retrieval score\nHelps the user inspect where the evidence came from\n\n\nInferred filters\nThe state, year, status, and topic filters parsed from the question by the filter-extractor pass\nMakes the pre-retrieval filter narrowing visible so the user can catch over- or under-constraint\n\n\nPlanner trace (optional)\nPer-turn planner messages, tool calls, and tool results, shown when the user checks “Show planner trace”\nTurns the agent loop from a black box into an inspectable trace for debugging and trust\n\n\nError / validation feedback\nA clear message if the question is missing or a request fails\nMakes failure states explicit rather than silent\n\n\n\n\n\nSuggested Query Types\n\nCross-state comparison questions\nDefinition questions about bill language\nQuestions about requirements, restrictions, penalties, or enforcement\nQuestions about trends across recent AI legislation"
+  },
+  {
+    "objectID": "km_sp2026/final_report/ai_bills_qa.html#architecture",
+    "href": "km_sp2026/final_report/ai_bills_qa.html#architecture",
+    "title": "AI Bills QA App",
+    "section": "Architecture",
+    "text": "Architecture\n\nTech Stack\n\n\n\n\n\n\n\n\nLayer\nPurpose\nDesign choice\n\n\n\n\nInterface layer\nAccepts natural-language questions and returns answers with citations\nA lightweight web interface keeps the app accessible to non-technical users\n\n\nOrchestration layer\nCoordinates retrieval, model selection, and response assembly\nOne shared QA service keeps the control flow separate from the UI\n\n\nRetrieval layer\nFinds relevant bill passages before answer generation\nDense vector retrieval is the primary method, with BM25-style lexical fallback for robustness\n\n\nGeneration layer\nProduces grounded answers from retrieved evidence\nThe app uses Retrieval-Augmented Generation (RAG) rather than answering from the model alone\n\n\nModel access layer\nConnects the app to hosted or local language models through one consistent interface\nA unified OpenAI-compatible API layer reduces provider lock-in\n\n\nPersistence layer\nReuses precomputed retrieval artifacts across sessions\nChunk metadata, embedding caches, and index state are stored for faster startup and lower serving cost\n\n\n\n\n\nPipeline\n\nThe bill corpus is split into overlapping text chunks so long legislative documents can be searched at passage level.\nThe chunks are indexed and stored on disk, including embeddings and per-chunk metadata (state, year, status bucket, topics) so the retrieval layer can both rank semantically and filter by metadata fields. The index is cached across sessions.\nWhen a user submits a question, a lightweight filter-extractor LLM pass parses the question into a semantic rewrite and a set of metadata filters (state, year, status, topics). Filters accept either a single value or a list, so “California or Texas” or “enacted or pending” resolve to OR-within-field semantics while constraints from different fields still AND together.\nA planner agent then runs a multi-turn tool-calling loop with four primitives: list_bills (filtered, semantically-ranked candidate list), get_bill_content (full text for one bill), summarize_bill (worker-LLM summary of one bill), and compare_bills (worker-LLM side-by-side across several bills). The planner decides how many calls to make, in what order, within the per-question budgets configured in settings/qa_config.yml.\nIf a ready vector index is unavailable, the same tools fall back to BM25-style lexical retrieval so question answering can still run.\nThe planner writes a final grounded answer from the evidence it collected, and the app returns a natural-language answer together with ranked citations, bill metadata, the inferred filters, and — when the user checks “Show planner trace” — the per-turn planner messages, tool calls, and tool results.\n\n\n\nTools Used\n\n\n\n\n\n\n\n\nTool / platform\nRole\nUsage in this project\n\n\n\n\nQuarto + GitHub Pages\nDocumentation and launch surface\nHosts this project page and the external launch link\n\n\nFlask\nWeb application framework\nServes the browser interface and the QA API\n\n\nRender\nApplication hosting\nHosts the live QA web app\n\n\nOpenRouter\nHosted model gateway\nProvides a unified OpenAI-compatible endpoint for model access\n\n\nopenai/text-embedding-3-small\nEmbedding model\nConverts bill chunks and user questions into vectors for semantic retrieval\n\n\ngoogle/gemini-2.5-flash\nDefault answer model\nGenerates the default grounded answer from retrieved bill text\n\n\nAdditional hosted models\nAlternative answer models\nLets users compare answer generation across multiple LLMs\n\n\nOptional local OpenAI-compatible runtime\nLocal model routing\nAdds a local answer model when a healthy local runtime is available"
+  },
+  {
+    "objectID": "km_sp2026/final_report/ai_bills_qa.html#versions",
+    "href": "km_sp2026/final_report/ai_bills_qa.html#versions",
+    "title": "AI Bills QA App",
+    "section": "Versions",
+    "text": "Versions\nThe QA app evolved through three distinct retrieval-and-answer strategies. Each version is evaluated against the same 100-question ground-truth set.\n\nV1 — single-pass RAG (baseline)\nThe user’s question is embedded directly, dense retrieval returns the top-k chunks over the entire index with no filtering, and those chunks are stuffed into a single grounded-answer prompt. No LLM runs before retrieval, and there is no agent or tool-calling step. This is the classic textbook RAG flow and the starting point for the app.\n\n\nV1 → V2 — self-query RAG (filter extractor added)\n\nA cheap filter-extractor LLM pass is introduced before retrieval. It parses the question into a semantic rewrite plus a metadata-filter dictionary (state, year, status, topics).\nThe retriever now masks its candidate set by those filters before ranking by dense similarity, so the answer prompt only ever sees passages from the right jurisdictions and years.\nThe answer-generation prompt itself is unchanged from V1.\nNet effect: reduces retrieval noise on filter-heavy questions, but introduces new failures when the extractor over-constrains (e.g. forces a single state when the question names several, or concatenates two topic labels into one string).\n\n\n\nV2 → V3 — agentic RAG with planner (current)\n\nA planner LLM is added on top of the V2 primitives. It drives a multi-turn tool-calling loop built on src/agent/loop.py and can issue zero-to-many tool calls per question.\nFour tools are exposed: list_bills, get_bill_content, summarize_bill, compare_bills. summarize_bill and compare_bills call their own worker LLM, which lets the planner answer list/compare/aggregate questions without putting the whole corpus in one prompt.\nFilter logic now supports OR-within-field (e.g. state in [CA, TX], status_bucket in [Enacted, Pending]) while still AND-ing across different fields.\nThe UI’s model dropdown now drives both the planner model and the worker model in one selection.\nAn optional per-request “Show planner trace” checkbox captures the planner’s internal messages, tool calls, and tool results for inspection, with a YAML-controlled default for the checkbox state.\nPer-question budgets (max_planner_turns, max_tool_calls, max_worker_calls, max_bills_per_list) are configurable in settings/qa_config.yml instead of hardcoded.\n\n\n\nCross-version evaluation (100-question ground truth)\n\n\n\n\n\n\n\n\n\n\nVersion\nPass rate\nMean keyword\nMean citation F1\nMean latency (s)\n\n\n\n\nV1 — single-pass RAG\n54%\n0.58\n0.12\n1.46\n\n\nV2 — self-query RAG\n59%\n0.63\n0.38\n2.65\n\n\nV3 — agentic RAG with planner\n79%\n0.84\n0.30\n6.65\n\n\n\nV3 is the deployed version. It trades higher latency for a 25-pp pass-rate gain over V1 and a 20-pp gain over V2, with the largest improvement on easy questions (96% vs 56% V1) where filter-and-list patterns dominate."
+  },
+  {
+    "objectID": "km_sp2026/final_report/final_report.html",
+    "href": "km_sp2026/final_report/final_report.html",
+    "title": "AI Policy Outcome Prediction",
+    "section": "",
+    "text": "U.S. states have introduced a dramatic wave of AI-related legislation in recent years\nyet only a small fraction of these bills ultimately become law.\nUnderstanding which bills succeed requires moving beyond aggregate adoption counts.\n\nPartisanship;\nEconomic conditions;\nRegulation mechanisms and transparency;\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBill topics (NCSL labels)\n\n\n\n\n\n\nExtracted entity types\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAdopted LLM driven data mining methods for:\n\nData annotation\nData enrichment\nNamed Entity Recognition\nPerformance benchmarking\nQuestion Answering AI Application with RAG"
+  },
+  {
+    "objectID": "km_sp2026/final_report/final_report.html#project-recap",
+    "href": "km_sp2026/final_report/final_report.html#project-recap",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Project Recap",
+    "text": "Project Recap\n\nU.S. states have introduced a dramatic wave of AI-related legislation in recent years\nyet only a small fraction of these bills ultimately become law.\nUnderstanding which bills succeed requires moving beyond aggregate adoption counts.\n\nPartisanship;\nEconomic conditions;\nRegulation mechanisms and transparency;"
+  },
+  {
+    "objectID": "km_sp2026/final_report/final_report.html#topic-and-entity-type-distribution",
+    "href": "km_sp2026/final_report/final_report.html#topic-and-entity-type-distribution",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Topic and entity-type distribution",
+    "text": "Topic and entity-type distribution\n\n\nBill topics (NCSL labels)\n\n\n\n\n\n\nExtracted entity types"
+  },
+  {
+    "objectID": "km_sp2026/final_report/final_report.html#task-definition",
+    "href": "km_sp2026/final_report/final_report.html#task-definition",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Task Definition",
+    "text": "Task Definition\nAdopted LLM driven data mining methods for:\n\nData annotation\nData enrichment\nNamed Entity Recognition\nPerformance benchmarking\nQuestion Answering AI Application with RAG"
+  },
+  {
+    "objectID": "km_sp2026/final_report/final_report.html#annotation-pipeline",
+    "href": "km_sp2026/final_report/final_report.html#annotation-pipeline",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Annotation pipeline",
+    "text": "Annotation pipeline"
+  },
+  {
+    "objectID": "km_sp2026/final_report/final_report.html#annotation-results",
+    "href": "km_sp2026/final_report/final_report.html#annotation-results",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Annotation Results",
+    "text": "Annotation Results\n\nDemocrat: 953\nRepublican: 508\nCommittee: 314 (all committee/office/body authors, including the previously blank ones)\nBipartisan: 84\nNonpartisan: 18 (Nebraska unicameral + existing entries)"
+  },
+  {
+    "objectID": "km_sp2026/final_report/final_report.html#baseline-model-target-features",
+    "href": "km_sp2026/final_report/final_report.html#baseline-model-target-features",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Baseline Model — Target & Features",
+    "text": "Baseline Model — Target & Features\n\nTarget\n\nadopted = 1 if status starts with “Enacted” or “Adopted”\n\nFeatures\n\nstate_adopt_rate — per-state historical adoption rate\nlog_wordcount — log(summary word count + 1)\ntopic_gov — topics contains “Government Use”\nUR — state_partisanship == “Republican”\nRepublican — author_partisanship == “Republican”\nyear_2025 — year == 2025\ndefn_found — summary contains definition-related keywords"
+  },
+  {
+    "objectID": "km_sp2026/final_report/final_report.html#baseline-model-specification",
+    "href": "km_sp2026/final_report/final_report.html#baseline-model-specification",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Baseline Model — Specification",
+    "text": "Baseline Model — Specification\n\nLogistic Regression, class_weight = \"balanced\", threshold = 0.50\n5-fold stratified CV, StandardScaler per fold"
+  },
+  {
+    "objectID": "km_sp2026/final_report/final_report.html#cross-validation-results",
+    "href": "km_sp2026/final_report/final_report.html#cross-validation-results",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Cross-validation results",
+    "text": "Cross-validation results"
+  },
+  {
+    "objectID": "km_sp2026/final_report/final_report.html#per-fold-performance-and-predictor-importance",
+    "href": "km_sp2026/final_report/final_report.html#per-fold-performance-and-predictor-importance",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Per-fold performance and predictor importance",
+    "text": "Per-fold performance and predictor importance"
+  },
+  {
+    "objectID": "km_sp2026/final_report/final_report.html#extraction-quadruplets-with-evidence-spans",
+    "href": "km_sp2026/final_report/final_report.html#extraction-quadruplets-with-evidence-spans",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Extraction Quadruplets with Evidence Spans",
+    "text": "Extraction Quadruplets with Evidence Spans\n\n\n\n\n\n\n\nKey\nValue\n\n\n\n\nentity\nwhat / who is regulated\n\n\ntype\ncategory of the entity\n\n\nattribute\nregulatory mechanism (mandate, prohibition, disclosure, …)\n\n\nvalue\nspecific content of that mechanism\n\n\n\n\nEvery field is anchored to a verbatim evidence span drawn from the bill text — traceability is a hard contract, not a hint\nNo fine-tuning, no pre-defined taxonomy"
+  },
+  {
+    "objectID": "km_sp2026/final_report/final_report.html#multi-turn-ner-workflow",
+    "href": "km_sp2026/final_report/final_report.html#multi-turn-ner-workflow",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Multi-Turn NER Workflow",
+    "text": "Multi-Turn NER Workflow"
+  },
+  {
+    "objectID": "km_sp2026/final_report/final_report.html#skill-driven-agent-ner-workflow",
+    "href": "km_sp2026/final_report/final_report.html#skill-driven-agent-ner-workflow",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Skill-Driven Agent NER Workflow",
+    "text": "Skill-Driven Agent NER Workflow"
+  },
+  {
+    "objectID": "km_sp2026/final_report/final_report.html#evaluation-four-llm-as-judge-tests",
+    "href": "km_sp2026/final_report/final_report.html#evaluation-four-llm-as-judge-tests",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Evaluation: Four LLM-as-Judge Tests",
+    "text": "Evaluation: Four LLM-as-Judge Tests"
+  },
+  {
+    "objectID": "km_sp2026/final_report/final_report.html#fine-tuning-model-specification",
+    "href": "km_sp2026/final_report/final_report.html#fine-tuning-model-specification",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Fine-tuning Model Specification",
+    "text": "Fine-tuning Model Specification\n\nModel: answerdotai/ModernBERT-base (encoder; HF Trainer + WeightedLossTrainer)\nSequence length: max_length = 1024, covers 91% of rows fully\nSweep: K = 5 folds × S = 3 seeds (13, 42, 1729) = 15 cells; early-stopping patience 2 on val_auroc\nOptimizer: AdamW, lr = 2.0e-5, weight_decay = 0.01, warmup_ratio = 0.06, bf16\nClass weighting: inverse-frequency weights for unbalanced classes"
+  },
+  {
+    "objectID": "km_sp2026/final_report/final_report.html#fine-tuning-results",
+    "href": "km_sp2026/final_report/final_report.html#fine-tuning-results",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Fine-tuning Results",
+    "text": "Fine-tuning Results\n\n\n\n\n\n\n\n\n\n\nMean test AUROC = 0.784 across 15 cells (5 folds × 3 seeds)\nRange across cells: ≈ 0.75 – 0.82\nTight distribution — not a single-fold artifact"
+  },
+  {
+    "objectID": "km_sp2026/final_report/final_report.html#fine-tuning-results-1",
+    "href": "km_sp2026/final_report/final_report.html#fine-tuning-results-1",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Fine-tuning Results",
+    "text": "Fine-tuning Results\n\n\nConvergence around epochs 3–4, then a small slow decay — early-stopping (patience 2) on val_auroc catches it. Spread across folds is the dominant source of variance, not seed."
+  },
+  {
+    "objectID": "km_sp2026/final_report/final_report.html#baseline-vs-fine-tune",
+    "href": "km_sp2026/final_report/final_report.html#baseline-vs-fine-tune",
+    "title": "AI Policy Outcome Prediction",
+    "section": "Baseline vs Fine-tune",
+    "text": "Baseline vs Fine-tune\n\n\n\n\n\n\n\n\n\nMetric\nBaseline (LR, 7 features)\nModernBERT-base (fine-tuned)\n\n\n\n\nMean test AUROC\n0.802\n0.784\n\n\nAggregation\n5-fold CV\n5 folds × 3 seeds = 15 cells\n\n\nInputs\n7 hand-crafted features\ntitle + summary + entities text + 5 metadata fields"
+  },
+  {
+    "objectID": "km_sp2026/final_report/final_report.html#qa-app-demonstration",
+    "href": "km_sp2026/final_report/final_report.html#qa-app-demonstration",
+    "title": "AI Policy Outcome Prediction",
+    "section": "QA App Demonstration",
+    "text": "QA App Demonstration\nLaunch AI Bills QA App\nApp Documentation"
+  },
+  {
+    "objectID": "km_sp2026/AI Bills QA App.html",
+    "href": "km_sp2026/AI Bills QA App.html",
+    "title": "AI Bills QA App",
+    "section": "",
+    "text": "Launch AI Bills QA App \n\nThe application opens in a new tab because it is hosted separately from this Quarto course site."
+  },
+  {
+    "objectID": "km_sp2026/AI Bills QA App.html#launch",
+    "href": "km_sp2026/AI Bills QA App.html#launch",
+    "title": "AI Bills QA App",
+    "section": "",
+    "text": "Launch AI Bills QA App \n\nThe application opens in a new tab because it is hosted separately from this Quarto course site."
+  },
+  {
+    "objectID": "km_sp2026/AI Bills QA App.html#why-this-app",
+    "href": "km_sp2026/AI Bills QA App.html#why-this-app",
+    "title": "AI Bills QA App",
+    "section": "Why This App?",
+    "text": "Why This App?\nU.S. states have introduced a dramatic wave of AI-related legislation in recent years, yet only a small fraction of these bills ultimately become law. Understanding this landscape requires more than reading aggregate adoption counts which requires engaging directly with the text of individual bills across dozens of jurisdictions.\nThis project treats AI legislation as a data mining problem. The corpus spans 1,879 bills across 53 jurisdictions and three legislative years (137 bills from 2023, 480 from 2024, 1,262 from 2025), covering topics from transparency and accountability requirements to regulatory frameworks and consumer protections. Because the bills vary widely in scope, framing, and language, navigating them manually is impractical. The QA app addresses that problem directly: it lets users ask natural-language questions against the full bill corpus and receive grounded answers drawn from retrieved bill passages, with citations back to the source text.\nThe app supports the broader research goal of predicting bill enactment from legislative, political, and economic factors. Analysts can use it to quickly surface how specific provisions, such as definitions of high-risk AI, transparency mandates, or enforcement mechanisms, are distributed across states, without reading every bill in full. It is also designed to make the dataset accessible to non-technical audiences who want to explore AI policy trends without writing code."
+  },
+  {
+    "objectID": "km_sp2026/AI Bills QA App.html#usage-guide",
+    "href": "km_sp2026/AI Bills QA App.html#usage-guide",
+    "title": "AI Bills QA App",
+    "section": "Usage Guide",
+    "text": "Usage Guide\n\nInputs\n\n\n\n\n\n\n\n\nInput\nWhat the user provides\nNotes\n\n\n\n\nQuestion\nA natural-language question about U.S. state AI bills\nExample: “Which states propose transparency requirements for high-risk AI?”\n\n\nAnswer model\nOne model selected from the dropdown menu\nThe chosen model drives both the planner agent and the summarize/compare worker tools, so one selection swaps both halves of the pipeline\n\n\nShow planner trace\nOptional checkbox on the form\nWhen checked, the response includes the planner’s internal messages, tool calls, and tool results so the user can audit how the answer was produced\n\n\n\n\n\nOutputs\n\n\n\n\n\n\n\n\nOutput\nWhat the app returns\nWhy it matters\n\n\n\n\nAnswer\nA direct natural-language response to the question\nGives a readable synthesis instead of raw search results\n\n\nCitations\nRanked supporting passages from retrieved bill chunks\nGrounds the answer in source text rather than free-form generation\n\n\nBill metadata\nBill ID, state, title, status, offsets, and retrieval score\nHelps the user inspect where the evidence came from\n\n\nInferred filters\nThe state, year, status, and topic filters parsed from the question by the filter-extractor pass\nMakes the pre-retrieval filter narrowing visible so the user can catch over- or under-constraint\n\n\nPlanner trace (optional)\nPer-turn planner messages, tool calls, and tool results, shown when the user checks “Show planner trace”\nTurns the agent loop from a black box into an inspectable trace for debugging and trust\n\n\nError / validation feedback\nA clear message if the question is missing or a request fails\nMakes failure states explicit rather than silent\n\n\n\n\n\nSuggested Query Types\n\nCross-state comparison questions\nDefinition questions about bill language\nQuestions about requirements, restrictions, penalties, or enforcement\nQuestions about trends across recent AI legislation"
+  },
+  {
+    "objectID": "km_sp2026/AI Bills QA App.html#architecture",
+    "href": "km_sp2026/AI Bills QA App.html#architecture",
+    "title": "AI Bills QA App",
+    "section": "Architecture",
+    "text": "Architecture\n\nTech Stack\n\n\n\n\n\n\n\n\nLayer\nPurpose\nDesign choice\n\n\n\n\nInterface layer\nAccepts natural-language questions and returns answers with citations\nA lightweight web interface keeps the app accessible to non-technical users\n\n\nOrchestration layer\nCoordinates retrieval, model selection, and response assembly\nOne shared QA service keeps the control flow separate from the UI\n\n\nRetrieval layer\nFinds relevant bill passages before answer generation\nDense vector retrieval is the primary method, with BM25-style lexical fallback for robustness\n\n\nGeneration layer\nProduces grounded answers from retrieved evidence\nThe app uses Retrieval-Augmented Generation (RAG) rather than answering from the model alone\n\n\nModel access layer\nConnects the app to hosted or local language models through one consistent interface\nA unified OpenAI-compatible API layer reduces provider lock-in\n\n\nPersistence layer\nReuses precomputed retrieval artifacts across sessions\nChunk metadata, embedding caches, and index state are stored for faster startup and lower serving cost\n\n\n\n\n\nPipeline\n\nThe bill corpus is split into overlapping text chunks so long legislative documents can be searched at passage level.\nThe chunks are indexed and stored on disk, including embeddings and per-chunk metadata (state, year, status bucket, topics) so the retrieval layer can both rank semantically and filter by metadata fields. The index is cached across sessions.\nWhen a user submits a question, a lightweight filter-extractor LLM pass parses the question into a semantic rewrite and a set of metadata filters (state, year, status, topics). Filters accept either a single value or a list, so “California or Texas” or “enacted or pending” resolve to OR-within-field semantics while constraints from different fields still AND together.\nA planner agent then runs a multi-turn tool-calling loop with four primitives: list_bills (filtered, semantically-ranked candidate list), get_bill_content (full text for one bill), summarize_bill (worker-LLM summary of one bill), and compare_bills (worker-LLM side-by-side across several bills). The planner decides how many calls to make, in what order, within the per-question budgets configured in settings/qa_config.yml.\nIf a ready vector index is unavailable, the same tools fall back to BM25-style lexical retrieval so question answering can still run.\nThe planner writes a final grounded answer from the evidence it collected, and the app returns a natural-language answer together with ranked citations, bill metadata, the inferred filters, and — when the user checks “Show planner trace” — the per-turn planner messages, tool calls, and tool results.\n\n\n\nTools Used\n\n\n\n\n\n\n\n\nTool / platform\nRole\nUsage in this project\n\n\n\n\nQuarto + GitHub Pages\nDocumentation and launch surface\nHosts this project page and the external launch link\n\n\nFlask\nWeb application framework\nServes the browser interface and the QA API\n\n\nRender\nApplication hosting\nHosts the live QA web app\n\n\nOpenRouter\nHosted model gateway\nProvides a unified OpenAI-compatible endpoint for model access\n\n\nopenai/text-embedding-3-small\nEmbedding model\nConverts bill chunks and user questions into vectors for semantic retrieval\n\n\ngoogle/gemini-2.5-flash\nDefault answer model\nGenerates the default grounded answer from retrieved bill text\n\n\nAdditional hosted models\nAlternative answer models\nLets users compare answer generation across multiple LLMs\n\n\nOptional local OpenAI-compatible runtime\nLocal model routing\nAdds a local answer model when a healthy local runtime is available"
+  },
+  {
+    "objectID": "km_sp2026/AI Bills QA App.html#versions",
+    "href": "km_sp2026/AI Bills QA App.html#versions",
+    "title": "AI Bills QA App",
+    "section": "Versions",
+    "text": "Versions\nThe QA app evolved through three distinct retrieval-and-answer strategies. Each version is evaluated against the same 100-question ground-truth set.\n\nV1 — single-pass RAG (baseline)\nThe user’s question is embedded directly, dense retrieval returns the top-k chunks over the entire index with no filtering, and those chunks are stuffed into a single grounded-answer prompt. No LLM runs before retrieval, and there is no agent or tool-calling step. This is the classic textbook RAG flow and the starting point for the app.\n\n\nV1 → V2 — self-query RAG (filter extractor added)\n\nA cheap filter-extractor LLM pass is introduced before retrieval. It parses the question into a semantic rewrite plus a metadata-filter dictionary (state, year, status, topics).\nThe retriever now masks its candidate set by those filters before ranking by dense similarity, so the answer prompt only ever sees passages from the right jurisdictions and years.\nThe answer-generation prompt itself is unchanged from V1.\nNet effect: reduces retrieval noise on filter-heavy questions, but introduces new failures when the extractor over-constrains (e.g. forces a single state when the question names several, or concatenates two topic labels into one string).\n\n\n\nV2 → V3 — agentic RAG with planner (current)\n\nA planner LLM is added on top of the V2 primitives. It drives a multi-turn tool-calling loop built on src/agent/loop.py and can issue zero-to-many tool calls per question.\nFour tools are exposed: list_bills, get_bill_content, summarize_bill, compare_bills. summarize_bill and compare_bills call their own worker LLM, which lets the planner answer list/compare/aggregate questions without putting the whole corpus in one prompt.\nFilter logic now supports OR-within-field (e.g. state in [CA, TX], status_bucket in [Enacted, Pending]) while still AND-ing across different fields.\nThe UI’s model dropdown now drives both the planner model and the worker model in one selection.\nAn optional per-request “Show planner trace” checkbox captures the planner’s internal messages, tool calls, and tool results for inspection, with a YAML-controlled default for the checkbox state.\nPer-question budgets (max_planner_turns, max_tool_calls, max_worker_calls, max_bills_per_list) are configurable in settings/qa_config.yml instead of hardcoded.\n\n\n\nCross-version evaluation (100-question ground truth)\n\n\n\n\n\n\n\n\n\n\nVersion\nPass rate\nMean keyword\nMean citation F1\nMean latency (s)\n\n\n\n\nV1 — single-pass RAG\n54%\n0.58\n0.12\n1.46\n\n\nV2 — self-query RAG\n59%\n0.63\n0.38\n2.65\n\n\nV3 — agentic RAG with planner\n79%\n0.84\n0.30\n6.65\n\n\n\nV3 is the deployed version. It trades higher latency for a 25-pp pass-rate gain over V1 and a 20-pp gain over V2, with the largest improvement on easy questions (96% vs 56% V1) where filter-and-list patterns dominate."
+  },
+  {
+    "objectID": "km_sp2026/final_report/final_report.html#state-ai-bill-count-by-year",
+    "href": "km_sp2026/final_report/final_report.html#state-ai-bill-count-by-year",
+    "title": "AI Policy Outcome Prediction",
+    "section": "State AI bill count by year",
+    "text": "State AI bill count by year"
+  },
+  {
+    "objectID": "km_sp2026/final_report/final_report.html#ai-bill-count-and-passage-by-state",
+    "href": "km_sp2026/final_report/final_report.html#ai-bill-count-and-passage-by-state",
+    "title": "AI Policy Outcome Prediction",
+    "section": "AI bill count and passage by state",
+    "text": "AI bill count and passage by state"
+  },
+  {
+    "objectID": "km_sp2026/final_report/final_report.html#ai-bill-sponsorship-by-party",
+    "href": "km_sp2026/final_report/final_report.html#ai-bill-sponsorship-by-party",
+    "title": "AI Policy Outcome Prediction",
+    "section": "AI bill sponsorship by party",
+    "text": "AI bill sponsorship by party"
   }
 ]

@@ -1,0 +1,220 @@
+---
+title: "AI Policy Outcome Prediction"
+subtitle: "EPPS 6323 Knowledge Mining Final Report"
+author: ["Xingyuan Zhao", "John-Paul Adjadeh", "Jing Tao", "Patrick Heldebrandt"]
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    transition: fade
+    incremental: false
+    fig-align: center
+---
+
+# Project Introduction
+
+## Project Recap
+
+- U.S. states have introduced a dramatic wave of AI-related legislation in recent years
+
+- yet only a small fraction of these bills ultimately become law.
+
+- Understanding which bills succeed requires moving beyond aggregate adoption counts.
+    - Partisanship;
+    - Economic conditions;
+    - Regulation mechanisms and transparency;
+
+## State AI bill count by year
+
+![](plots/desc_bill_count_by_year.png){fig-align="center" width=80%}
+
+## AI bill count and passage by state
+
+![](plots/bill_count_passed_maps.png){fig-align="center" width=100%}
+
+## Topic and entity-type distribution
+
+::: {.columns}
+::: {.column width="50%"}
+**Bill topics (NCSL labels)**
+
+![](plots/topic_wordcloud.png){fig-align="center" width=95%}
+:::
+::: {.column width="50%"}
+**Extracted entity types**
+
+![](plots/entity_type_wordcloud.png){fig-align="center" width=95%}
+:::
+:::
+
+## AI bill sponsorship by party
+
+![](docs/figures/ai_bill_sponsorship_donut%20%281%29.png){fig-align="center" width=78% fig-alt="Donut chart of state legislative AI bills by sponsor party affiliation (Democrat, Republican, Committee, Bipartisan, Nonpartisan)."}
+
+## Task Definition
+
+Adopted LLM driven data mining methods for:
+
+- Data annotation
+
+- Data enrichment
+
+- Named Entity Recognition
+
+- Performance benchmarking
+
+- Question Answering AI Application with RAG
+
+# LLM-driven data annotation
+
+
+## Annotation pipeline
+
+![](plots/diagrams/data_annotation_workflow.png){fig-align="center" width=100%}
+
+
+## Annotation Results
+
+- Democrat: 953
+- Republican: 508
+- Committee: 314 (all committee/office/body authors, including the previously blank ones)
+- Bipartisan: 84
+- Nonpartisan: 18 (Nebraska unicameral + existing entries)
+
+# Baseline model construction
+
+## Baseline Model --- Target & Features
+
+::: {style="font-size: 0.85em;"}
+
+**Target**
+
+- `adopted = 1` if status starts with "Enacted" or "Adopted"
+
+**Features**
+
+- `state_adopt_rate` --- per-state historical adoption rate
+- `log_wordcount` --- log(summary word count + 1)
+- `topic_gov` --- topics contains "Government Use"
+- `UR` --- state_partisanship == "Republican"
+- `Republican` --- author_partisanship == "Republican"
+- `year_2025` --- year == 2025
+- `defn_found` --- summary contains definition-related keywords
+
+:::
+
+## Baseline Model --- Specification
+
+- Logistic Regression, `class_weight = "balanced"`, threshold = 0.50
+- 5-fold stratified CV, `StandardScaler` per fold
+
+## Cross-validation results {style="margin-bottom: 0.1em;"}
+
+::: {style="transform: scale(1.42); transform-origin: top center; width: 100%; margin-left: auto; margin-right: auto;"}
+![](plots/table1_cv_results.png){width=100% fig-align="center" style="margin: 0; vertical-align: top; display: block;"}
+:::
+
+## Per-fold performance and predictor importance
+
+![](plots/figure1_cv_performance.png){fig-align="center" width=100%}
+
+# Granular entity extraction
+
+## Extraction Quadruplets with Evidence Spans
+
+| Key | Value |
+|---|---|
+| **entity** | what / who is regulated |
+| **type** | category of the entity |
+| **attribute** | regulatory mechanism (mandate, prohibition, disclosure, ...) |
+| **value** | specific content of that mechanism |
+
+- Every field is anchored to a **verbatim evidence span** drawn from the bill text --- traceability is a hard contract, not a hint
+- No fine-tuning, no pre-defined taxonomy
+
+## Multi-Turn NER Workflow
+
+![](plots/diagrams/method_a_multi_turn_pipeline.png){fig-align="center" width=100%}
+
+## Skill-Driven Agent NER Workflow
+
+![](plots/diagrams/method_b_skill_driven_agent.png){fig-align="center" width=100%}
+
+## Evaluation: Four LLM-as-Judge Tests
+
+::: {.columns}
+::: {.column width="50%"}
+![](plots/02_grounding_distribution.png){width=100%}
+:::
+::: {.column width="50%"}
+![](plots/01_coverage_by_method.png){width=100%}
+:::
+:::
+
+::: {.columns}
+::: {.column width="50%"}
+![](plots/04_pairwise_winrate.png){width=100%}
+:::
+::: {.column width="50%"}
+![](plots/06_bias_scorecard.png){width=100%}
+:::
+:::
+
+# Fine-tuned model
+
+## Fine-tuning Model Specification
+
+- **Model:** `answerdotai/ModernBERT-base` (encoder; HF Trainer + `WeightedLossTrainer`)
+- **Sequence length:** `max_length = 1024`, covers 91% of rows fully
+- **Sweep:** K = 5 folds × S = 3 seeds (13, 42, 1729) = **15 cells**; early-stopping patience 2 on `val_auroc`
+- **Optimizer:** AdamW, `lr = 2.0e-5`, `weight_decay = 0.01`, `warmup_ratio = 0.06`, bf16
+- **Class weighting:** inverse-frequency weights for unbalanced classes
+
+## Fine-tuning Results
+
+::: {.columns}
+::: {.column width="45%"}
+![](plots/training/02_seed_stability.png){fig-align="center" width=100%}
+:::
+::: {.column width="55%"}
+::: {style="font-size: 0.95em;"}
+
+- **Mean test AUROC = 0.784** across 15 cells (5 folds × 3 seeds)
+- Range across cells: ≈ 0.75 -- 0.82
+- Tight distribution --- not a single-fold artifact
+
+:::
+:::
+:::
+
+## Fine-tuning Results
+
+![](plots/training/04_per_fold_curves.png){fig-align="center" width=68%}
+
+::: {style="font-size: 0.85em;"}
+Convergence around epochs 3--4, then a small slow decay --- early-stopping (patience 2) on `val_auroc` catches it. Spread across folds is the dominant source of variance, not seed.
+:::
+
+
+## Baseline vs Fine-tune
+
+::: {style="font-size: 0.85em;"}
+
+| Metric | Baseline (LR, 7 features) | ModernBERT-base (fine-tuned) |
+|---|---:|---:|
+| Mean test AUROC | **0.802** | 0.784 |
+| Aggregation | 5-fold CV | 5 folds × 3 seeds = 15 cells |
+| Inputs | 7 hand-crafted features | `title + summary + entities` text + 5 metadata fields |
+
+:::
+
+# Question Answering AI Application
+
+## QA App Demonstration
+
+[Launch AI Bills QA App](https://ai-policy-qa.onrender.com){target="_blank"}
+
+[App Documentation](ai_bills_qa.html){target="_blank"}
+
+
+
